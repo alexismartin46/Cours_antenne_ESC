@@ -15,7 +15,10 @@
 - Réseau d'antennes
 
 # TPs
-(en cours)
+[Sujet de TP complet](./TP/TPs.pdf)
+
+- Simulation d'un réseaa d'antennes Patch (ADS)
+- Mesure d'antennes imprimées en chambre anéchoïque
 
 # Examens
 - 2025
