@@ -1,0 +1,439 @@
+\documentclass[
+10pt,
+aspectratio=169,
+]{beamer}
+
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tcolorbox}
+\usepackage{beamerthemeensea}
+
+
+\title{Antennes – ESC}
+\subtitle{Cours 6: Antennes Réseaux}
+\date{\the\year}
+\author{Alexis MARTIN}
+%\institute{ENSEA}
+
+\usetheme{ensea}  
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Antennes Réseaux}
+
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=0.9\textwidth]{figures/reseau_patchs.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/reseau_fentes.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=0.7\textwidth]{figures/reseau_yagi.png}
+\end{minipage}
+
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=0.9\textwidth]{figures/reseau_filaire.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/reseau_radome.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/reseau_paraboles.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Facteur de réseau}
+\begin{frame}
+\frametitle{Translation d'une antenne}
+
+Soit une antenne placée à l'origine, avec une répartition de courant
+connue. Le champ rayonné à l'infini est donné par:
+
+\vspace{0.5cm}
+$\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{j.\omega.\mu}{4\pi}.\dfrac{e^{-j.k.r}}{r}\vec{u}\wedge \left(\vec{u}\wedge \left[\iiint_{W_S}\vec{J}(\vec{r'})e^{jk\vec{u}.\vec{r'}}d^3r'\right]\right)$
+
+\begin{minipage}{0.45\textwidth}
+On translate l'antenne au point $r_1$:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/translation_antenne.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Translation d'une antenne}
+
+Pour un point d'observation éloigné, on a:
+
+\[||\vec{r}-(\vec{r_1}+\vec{r'})||\underset{r \rightarrow \infty}{\approx} r-(\vec{r_1}+\vec{r'}).\vec{u}\]
+
+L'expression du champ rayonné par l'antenne translatée est alors:
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colframe=red,width=5cm]
+\centering$\vec{E_1}(\vec{r})=\vec{E_0}(\vec{r})e^{jk\vec{u}.\vec{r_1}}$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colframe=red,width=9cm]
+\centering Ce résultat très simple, et très important est appelé \textit{Théorème de
+translation}
+\end{tcolorbox}
+
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Facteur de réseau}
+
+\begin{minipage}{0.45\textwidth}
+Soit $\vec{E_0}(\vec{r})$ le champ rayonné par une antenne
+élémentaire placée à l'origine, et parcourue par le
+courant $I_0$, et soit $I_p$ le courant sur l'antenne $p$,
+translatée de l'antenne placée à l'origine, on a alors:
+
+\[\vec{E}(\vec{r})=\vec{E_0}(\vec{r})\sum_{p=0}^{N-1}\dfrac{I_p}{I_0}e^{j.p.k.d.\vec{u}.\vec{e_z}}\]
+
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.8\textwidth]{figures/facteur_reseau.png}
+\end{minipage}
+
+\vspace{0.25cm}
+$f(\vec{u})=\sum_{p=0}^{N-1}\dfrac{I_p}{I_0}e^{j.p.k.d.\vec{u}.\vec{e_z}}$ est appelé ``\textit{facteur de réseau}''.
+
+\vspace{0.5cm}
+\underline{\textbf{Attention}}: $I_p$ et $I_0$ sont des courants complexes, il faut donc tenir compte de leurs amplitudes et de leurs phases!
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Diagramme de rayonnement}
+
+Soit $r_0(\theta,\varphi)$ la caractéristique de rayonnement de l'antenne
+élémentaire. On a:
+
+$r(\theta,\varphi)=r_0(\theta,\varphi).|f(\theta,\varphi)|^2$
+
+\vspace{0.5cm}
+Le diagramme de rayonnement d'un réseau est donc obtenu en
+multipliant le diagramme de rayonnement de l'antenne élémentaire
+par $|f(\theta,\varphi)|^2$.
+
+\vspace{0.5cm}
+Il y a un effet de ``\textit{multiplication des diagrammes}''.
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Réseau uniforme à déphasage linéaire}
+\begin{frame}
+\frametitle{Réseau uniforme à déphasage linéaire}
+
+Le courant a la même amplitude sur toutes les antennes, mais la phase
+varie linéairement:
+
+$I_p=I_0.e^{-j.p.\Psi}$
+
+On a alors: $f(\theta)=e^{j\frac{N-1}{2}(k.d.\sin\theta-\Psi)}\dfrac{\sin\left(\dfrac{N(k.d.\sin\theta-\Psi)}{2}\right)}{\sin\left(\dfrac{k.d.\sin\theta-\Psi}{2}\right)}$
+
+Et, \textbf{après normalisation, de façon à ce que le réseau rayonne la
+même puissance totale que l'antenne élémentaire}:
+
+\[||f(\theta)||=\dfrac{1}{\sqrt{N}}\left|\dfrac{\sin\left(\dfrac{N(k.d.\sin\theta-\Psi)}{2}\right)}{\sin\left(\dfrac{k.d.\sin\theta-\Psi}{2}\right)}\right|\]
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Réseau uniforme à déphasage linéaire}
+
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/reseau_lineaire_psi0.png}
+\end{figure}
+
+\vspace{-0.4cm}
+\begin{center}
+Réseau uniforme à déphasage linéaire, $\Psi=0$
+\end{center}
+
+\vspace{-0.25cm}
+\[||f(u_z)||=\dfrac{1}{\sqrt{N}}\left|\dfrac{\sin\left(\dfrac{N(k.d.\vec{u}.\vec{e_z}-\Psi)}{2}\right)}{\sin\left(\dfrac{k.d.\vec{u}.\vec{e_z}-\Psi}{2}\right)}\right|\]
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Réseau uniforme à déphasage linéaire}
+
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/reseau_lineaire_psi_non0.png}
+\end{figure}
+
+\vspace{-0.4cm}
+\begin{center}
+Réseau uniforme à déphasage linéaire, $\Psi\ne 0$
+\end{center}
+
+\vspace{-0.25cm}
+\[||f(u_z)||=\dfrac{1}{\sqrt{N}}\dfrac{\sin\left(\dfrac{N(kdu_z-\Psi)}{2}\right)}{\sin\left(\dfrac{kdu_z-\Psi}{2}\right)}\]
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Exemples}
+\begin{frame}
+\frametitle{Exemple $N=8$, $d = \lambda/2$}
+
+\begin{minipage}{0.55\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/exemple_N8_dls2_psi0_rect.png}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/exemple_N8_dls2_psi0_polar.png}
+\end{minipage}
+
+\begin{center}
+Réseau uniforme à déphasage linéaire, $\Psi=0$
+\end{center}
+
+Ce réseau est dit ``\textit{transverse}'' (broadside). Il rayonne
+perpendiculairement à la direction de l'alignement.
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Exemple $N=8$, $d = \lambda/2$}
+
+\begin{minipage}{0.55\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/exemple_N8_dls2_psipisqrt2_rect.png}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/exemple_N8_dls2_psipisqrt2_polar.png}
+\end{minipage}
+
+\begin{center}
+Réseau uniforme à déphasage linéaire, $\Psi=\dfrac{\pi}{\sqrt{2}}$
+\end{center}
+
+Ce réseau rayonne un maximum à $45^\circ$ de la direction de l'alignement.
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Exemple $N=8$, $d = \lambda/2$}
+
+\begin{minipage}{0.55\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/exemple_N8_dls2_psipi_rect.png}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/exemple_N8_dls2_psipi_polar.png}
+\end{minipage}
+
+\begin{center}
+Réseau uniforme à déphasage linéaire, $\Psi=\pi$
+\end{center}
+
+Ce réseau est dit ``\textit{longitudinal}'' (end-fire). Il rayonne parallèlement
+à la direction de l'alignement.
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Lobes de réseau}
+
+Des lobes de réseau apparaissent (dans le domaine du visible) si $d>\lambda$
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/lobes_reseau.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Réseau transverse de doublets
+électriques}
+
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\textwidth]{figures/directivite_reseau_doublet.png}
+\end{figure}
+
+La directivité d'un doublet élémentaire est égale à 1.5.
+
+Pour obtenir une directivité égale à 15, avec N = 10, il faut choisir un
+pas de l'ordre de $0.75 \lambda$.
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Réseau transverse de dipôles
+demi-onde}
+
+\vspace{-0.25cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\textwidth]{figures/directivite_reseau_dipole.png}
+\end{figure}
+
+La directivité d'un dipôle élémentaire est égale à 1.64.
+
+Pour obtenir une directivité égale à 16.4, avec N = 10, il faut choisir un
+pas légèrement suppérieur à $0.8 \lambda$.
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Alimentation d'un réseau}
+\begin{frame}
+\frametitle{Alimentation d'un réseau}
+
+En émission, le signal issu de la source doit être divisé, avant
+d'alimenter chaque élément du réseau.
+
+Et si l'antenne est destinée à faire du ``\textit{balayage de phase}'', le
+signal doit aussi être déphasé avant chaque élément.
+
+\vspace{1cm}
+En réception, le répartiteur se comporte en additionneur:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/reseau_alimentation.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Conception du répartiteur}
+
+La conception du répartiteur est complexe car les antennes constituant
+le réseau sont fortement couplées entre elles:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/reseau_couplage.png}
+\end{figure}
+
+Les conséquences du couplage sont doubles:
+\begin{itemize}
+    \item l'impédance de chaque élément dépend non seulement de la
+    présence des autres éléments, mais aussi de la nature exacte du
+    coupleur
+    \item le diagramme de rayonnement n'est pas le même que celui
+    que l'on aurait avec des antennes découplées entre elles. Il dépend
+    de la nature exacte du coupleur
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Coefficient de réflexion ``actif''}
+
+Il s'agit du coefficient de réflexion d'un élément de l'antenne, alors
+que tous les éléments sont connectés au répartiteur:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/reseau_reflexion.png}
+\end{figure}
+
+Pour l'antenne 1, ce coefficient est donné par:
+
+\[\Gamma_{1\ \text{actif}}=\dfrac{b_1}{a_1}\]
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cas d'un réseau infini}
+
+On effectue la simulation sur une seule cellule d'un réseau infini:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/reseau_infini.png}
+\end{figure}
+
+On obtient alors le coefficient de réflexion (actif) de la cellule
+élémentaire, avec un choix quelconque de la direction d'émission.
+
+Le coefficient de réflexion obtenu dépend de la direction souhaitée.
+
+\vspace{0.5cm}
+La détermination du coefficient de réflexion actif facilite la
+conception du répartiteur pour un réseau infini.
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Angle d'aveuglement}
+
+On observe une direction pour laquelle toute la puissance est réfléchie:
+
+Il s'agit de ``\textit{l'angle d'aveuglement}'' (``\textit{scan blindness angle}'').
+
+\vspace{0.5cm}
+Cet angle peut aussi être observé, à l'aide de la courbe de gain, en
+fonction de l'angle ``visé''.
+
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/angle_aveuglement_s11.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/angle_aveuglement_gain.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Répartiteur parfaitement découplé}
+
+Dans ce cas, le répartiteur présente une matrice $[S]$, qui est la
+transconjuguée de la matrice $[S_A]$ des antennes.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/repartiteur_decouple.png}
+\end{figure}
+
+C'est le cas optimum qui permet un transfert maximum de puissance
+vers le réseau.
+
+\vspace{0.5cm}
+Mais, pour obtenir ce résultat, la structure du répartiteur est
+particulièrement complexe!
+\end{frame}
+
+\end{document}

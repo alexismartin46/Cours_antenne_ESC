@@ -1,0 +1,375 @@
+\documentclass[
+10pt,
+aspectratio=169,
+]{beamer}
+
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tcolorbox}
+\usepackage{beamerthemeensea}
+
+
+\title{Antennes – ESC}
+\subtitle{Cours 5: Antennes Patchs imprimés}
+\date{\the\year}
+\author{Alexis MARTIN}
+%\institute{ENSEA}
+
+\usetheme{ensea}  
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Antennes Patchs}
+
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/Modele_Patch.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=0.8\textwidth]{figures/Patch.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=0.9\textwidth]{figures/Patch2.png}
+\end{minipage}
+
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=0.8\textwidth]{figures/Patch3.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/Patch4.png}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/Patch5.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Modélisation}
+\begin{frame}
+\frametitle{Modélisation approchée}
+
+Deux méthodes d'alimentation possibles:
+
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/alim_patch.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/alim_patch2.png}
+\end{minipage}
+
+Approximation de la ligne sans pertes:
+
+\begin{minipage}{0.4\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/modele_patch2.png}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+\centering$\Leftrightarrow$
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/modele_patch3.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fréquence de résonance}
+\begin{minipage}{0.45\textwidth}
+
+Ondes stationnaires d'amplitude $V_{\max}$:
+
+\vspace{0.5mm}
+$V_{\max}=\dfrac{V_g}{\sqrt{\cos^2\left(\dfrac{\omega .l}{v}\right)+\dfrac{R_g^2}{R_c^2}\sin^2\left(\dfrac{\omega .l}{v}\right)}}$
+
+\vspace{0.5mm}
+Le cas des antennes ``patch'' correspond à $R_g >> R_c$
+
+\vspace{0.5mm}
+Les fréquences de résonance sont donc données par:
+
+\begin{tcolorbox}[colframe=red,width=6cm]
+\centering$l=n\dfrac{\lambda_g}{2}$
+
+\vspace{0.5mm}
+$\lambda_g$: longueur d'onde ``guidée''
+
+\end{tcolorbox}
+
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.9\textwidth]{figures/freq_res.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Courant à la résonance sur le patch $\lambda_g/2$}
+
+$\lambda_g=\dfrac{\lambda_0}{\sqrt{\epsilon_{eff}}}$
+
+\vspace{0.5mm}
+$\lambda_0$: longueur d'onde dans le vide
+
+\vspace{0.5mm}
+$\epsilon_{eff}$: constante diélectrique ``effective'', qui dépend de la géométrie
+de la ligne
+
+\vspace{0.5mm}
+Dans l'approximation de la ligne sans pertes, le courant est donné par:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/courant_patch.png}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Tension à la résonance sur le patch $\lambda_g/2$}
+Dans l'approximation de la ligne sans pertes, la tension est donnée par:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/tension_patch.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}\label{sec:champ_patch}
+\frametitle{Champ électrique autour du patch}
+
+\begin{minipage}{0.45\textwidth}
+    Vue de ``côté'':
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/champ_patch_cote.png}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+    Vue de dessus:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_patch_dessus.png}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+    Equivalence avec le rayonnement de 2 fentes:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.9\textwidth]{figures/champ_patch_equivalent.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Longeur effective du patch}
+En pratique, à cause du débordement des lignes de champ, la longeur effective $L_e$ du patch est:
+
+\[L_e=L+2\Delta L\]
+
+On utilise classiquement la formule empirique:
+\[\Delta L=0.412h\dfrac{(\epsilon_{eff}+0.3)(\dfrac{W}{h}+0.264)}{(\epsilon_{eff}-0.258)(\dfrac{W}{h}+0.8)}\]
+\begin{itemize}
+    \item $h$ la hauteur du substrat
+    \item $W$ la largeur du patch
+    \item $\epsilon_{eff}$ la constante diélectrique effective\\
+    $\epsilon_{eff}=\dfrac{\epsilon_r+1}{2}+\dfrac{\epsilon_r-1}{2}\dfrac{1}{\sqrt{1+12\dfrac{h}{W}}}$
+\end{itemize}
+
+La résonnance se produit donc pour:
+\[L_e=\dfrac{\lambda_g}{2}\]
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Diagramme de rayonnement}
+Selon l'approximation de ligne sans pertes (\textbf{attention au repère utilisé}, Cf slide\ \ref{sec:champ_patch}):
+
+\vspace{0.5cm}
+%$||\vec{E}(u_x,u_y)||=K\sqrt{1-u_x^2}\dfrac{\sin\left(\pi u_y \dfrac{w}{\lambda}\right)}{\pi u_y \dfrac{w}{\lambda}}\cos\left(\pi u_x \dfrac{l}{\lambda}\right)$
+$E_\varphi \approx K \sin\theta\dfrac{\sin\left(\dfrac{k.h\sin\theta\cos\varphi}{2}\right)}{\dfrac{k.h\sin\theta\cos\varphi}{2}}\dfrac{\sin\left(\dfrac{k.W\cos\theta}{2}\right)}{\dfrac{k.W\cos\theta}{2}}\cos\left(\dfrac{k.L_e}{2}\sin\theta\sin\varphi\right)$
+
+\vspace{0.25cm}
+avec:
+\begin{itemize}
+    \item $h$ la hauteur du substrat
+    \item $W$ la largeur du patch
+    \item $L_e$ la longueur effective du patch
+\end{itemize}
+
+\vspace{0.5cm}
+Pour des substrats de faible épaisseur ($kh<<1$), on a:
+
+\vspace{0.25cm}
+$E_\varphi \approx E_0 \sin\theta\dfrac{\sin\left(\dfrac{k.W\cos\theta}{2}\right)}{\cos\theta}\cos\left(\dfrac{k.L_e}{2}\sin\theta\sin\varphi\right)$
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Diagramme de rayonnement}
+
+Tracé avec $W = L_e = 0,4 \lambda_0$:
+
+
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/diagramme_planE.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/diagramme_planH.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Diagramme de rayonnement}
+La formule $D\approx \dfrac{36400}{\theta_E^\circ\theta_H^\circ}$ donne dans ce cas $D=9\ dB$
+
+\vspace{0.5cm}
+Sachant que la conductance d'une fente est donnée par:
+
+\[G_r=\dfrac{4\pi w^2}{3\eta\lambda^2}\]
+
+Le modèle de la ligne sans pertes équivalente donne:
+
+\begin{figure}
+\centering\includegraphics[width=0.5\textwidth]{figures/modele_patch4.png}
+\end{figure}
+
+\hspace{3cm}$Z_e=\dfrac{1}{2.G_r}=281\ \Omega$ \hspace{1cm} (pour $w=0.4\lambda$)
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\section{Simulations}
+\begin{frame}
+\frametitle{Simulations 2,5D d'un patch
+$0.4\lambda_0 \times  0.4 \lambda_0$}
+
+\begin{minipage}{0.45\textwidth}
+Patch $12 cm \times 12 cm$
+
+Substrat air, épaisseur 25 mm
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.7\textwidth]{figures/simulation_patch.png}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+Impédance = 250 $\Omega$ à la fréquence
+de résonance (1 Ghz)
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.7\textwidth]{figures/simulation_impedance.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simulations 2,5D d'un patch
+    $0.4\lambda_0 \times  0.4 \lambda_0$}
+
+Diagramme rayonnement 2D\@:
+
+
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.8\textwidth]{figures/simulation_diagramme2D_E.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.8\textwidth]{figures/simulation_diagramme2D_H.png}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+    Courants + diagramme
+rayonnement 3D\@:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=0.8\textwidth]{figures/simulation_diagramme3D_courants.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\section{Alimentation du patch}
+\begin{frame}
+\frametitle{Alimentation du patch en un point
+quelconque}
+
+\begin{minipage}{0.45\textwidth}
+    Alimentation au travers du
+plan de masse:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/alim_plan_masse.png}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+    L'impédance d'entrée peut être
+calculée à l'aide du modèle de la
+ligne sans pertes équivalente:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/modele_alim_plan_masse.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Alimentation du patch en un point quelconque}
+On trouve que la fréquence de résonance est inchangée, elle est telle
+que:
+\[l_1+l_2=\dfrac{\lambda_g}{2}-2\Delta L\]
+
+Par contre, le choix de la position du point d'alimentation permet de
+``régler'' la valeur de l'impédance à la résonance: en se
+rapprochant du centre, l'impédance tend vers 0 (mais l'antenne
+devient plus sélective).
+
+\begin{minipage}{0.25\textwidth}
+    Variante:
+\end{minipage}
+\begin{minipage}{0.65\textwidth}
+\centering\includegraphics[width=\textwidth]{figures/alim_patch_cote.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Alimentation du patch par couplage}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/alim_patch_slot.png}
+\end{figure}
+
+Cette méthode permet de séparer l'alimentation de l'élément rayonnant.
+
+Inconvénient: augmentation du rayonnement arrière dû au rayonnement de la fente.
+
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,724 @@
+\documentclass[
+10pt,
+aspectratio=169,
+]{beamer}
+
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tcolorbox}
+\usepackage{beamerthemeensea}
+
+
+\title{Antennes – ESC}
+\subtitle{Cours 4: Antennes à ouverture}
+\date{\the\year}
+\author{Alexis MARTIN}
+%\institute{ENSEA}
+
+\usetheme{ensea}  
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Exemples d'antennes à ouverture}
+
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/antenne_guide.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/antenne_cornet.png}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+    Les antennes comportant un réflecteur
+font partie de cette catégorie
+d'antennes:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/antenne_reflecteur.png}
+\end{minipage}
+
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Courants magnétiques}
+\begin{frame}
+\frametitle{Courants magnétiques}
+On pourrait supposer, par souci de symétrie, l'existence de courants
+magnétiques:
+
+\begin{center}
+    $\vec{M}$: densité de courant magnétique
+
+    $\tau$: densité de charge magnétique
+\end{center}
+
+Avec ces courants magnétiques, les équations de Maxwell
+deviendraient:
+
+\[\vec{rot}(\vec{E})=-\vec{M}-j.\omega.\mu.\vec{H}\]
+
+\[\vec{rot}(\vec{H})=\vec{J}+j.\omega.\varepsilon.\vec{E}\]
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Symétrie E $<->$ H et J $<->$ M}
+\begin{tabular}{c l}
+    Partant de: & $\vec{rot}(\vec{E_1})= - j.\omega.\mu.\vec{H_1}$\\
+    & $\vec{rot}(\vec{H_1})=\vec{J_1}+j.\omega.\varepsilon.\vec{E_1}$
+\end{tabular}
+
+\vspace{0.5cm}
+\begin{tabular}{l}
+Et en faisant les changements de variables:\\
+
+$\vec{E_1}=\eta.\vec{H_2}$\hspace{0.5cm};\hspace{0.5cm}$\vec{H_1}=-\frac{\vec{E_2}}{\eta}$\hspace{0.5cm};\hspace{0.5cm}$\vec{J_1}=\dfrac{\vec{M_2}}{\eta}$
+\end{tabular}
+
+\vspace{0.5cm}
+\begin{tabular}{c l}
+    On obtient: & $\vec{rot}(\vec{E_2})= \vec{M_2} - j.\omega.\mu.\vec{H_2}$\\
+    & $\vec{rot}(\vec{H_2})=j.\omega.\varepsilon.\vec{E_2}$
+\end{tabular}
+
+\vspace{0.25cm}
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=11cm]
+    Des courants magnétiques peuvent donc créer des champs
+    identiques à ceux créés par une répartition de courant
+    électrique, à condition d'échanger les champs E et H
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Potentiel vecteur magnétique}
+Comme $\vec{rot}(\vec{H_2})=j.\omega.\varepsilon.\vec{E_2}$ alors, $div(\vec{rot}(\vec{H_2}))=div(j.\omega.\varepsilon.\vec{E_2})=0$.
+
+On a donc $div(\vec{E_2})=0$.
+
+De même que pour les courants électriques, on peut définir un potentiel vecteur magnétique $\vec{F}$ pour des courants magnétiques tel que: $\vec{D}=\vec{rot}(\vec{F})$
+
+\vspace{0.5cm}
+L'equation de propagation du potentiel vecteur magnétique est:
+\[\Delta \vec{F}+k^2\dfrac{\partial^2\vec{F}}{\partial t^2}=-\epsilon\vec{M}\]
+
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{0.5cm}
+La solution de cette équation est:
+
+\begin{tcolorbox}[colframe=red,width=7cm]
+\centering
+$\vec{F}(\vec{r})=\dfrac{\epsilon}{4\pi}\iiint_{sources} \vec{M}(\vec{r'})\dfrac{e^{-jkR}}{R}dV'$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{-0.5cm}
+\raggedleft\includegraphics[width=0.7\textwidth]{figures/calcul_rayonnement.png}
+\vspace{-0.3cm}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Rayonnement d'une source quelconque de courants 
+magnétiques}
+
+On note $\Psi(\vec{r})=\dfrac{e^{-jk||\vec{r}||}}{||\vec{r}||}$
+
+\begin{tcolorbox}[colframe=red,width=7.5cm]
+\centering
+$\vec{F}(\vec{r})=\dfrac{\epsilon}{4\pi}\iiint_{sources}\vec{M}(\vec{r'})\Psi(\vec{r}-\vec{r'})dV'$
+\end{tcolorbox}
+
+On en déduit le champ magnétique rayonné:
+
+\begin{tcolorbox}[colframe=red,width=6.5cm]
+\centering
+$\vec{H}=\dfrac{1}{j\omega\epsilon\mu}\left(\vec{grad}(div(\vec{F}))+k^2\vec{F}\right)$
+\end{tcolorbox}
+
+Et le champ électrique rayonné:
+\begin{tcolorbox}[colframe=red,width=4cm]
+\centering
+$\vec{E}=-\dfrac{1}{\epsilon}\vec{rot}(\vec{F})$
+\end{tcolorbox}
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Rayonnement en champ lointain}
+De même que pour les courants électriques, en champ lointain on peut faire l'approximation:
+
+\begin{itemize}
+    \item Pour les phases: $||\vec{r}-\vec{r'}|| \approx ||\vec{r}|| - \vec{e_r}.\vec{r'}$
+    \item Pour les amplitudes: $||\vec{r}-\vec{r'}|| \approx ||\vec{r}||$
+\end{itemize}
+
+\vspace{-0.25cm}
+\[\Psi(\vec{r}-\vec{r'}) \approx \dfrac{e^{-jk||\vec{r}||}}{||\vec{r}||}e^{jk.\vec{e_r}.\vec{r'}}\]
+
+\begin{tcolorbox}[colframe=red,width=9cm]
+\centering
+$\vec{F}(\vec{r}) \approx \dfrac{\epsilon}{4\pi}\dfrac{e^{-jk||\vec{r}||}}{||\vec{r}||}\iiint_{sources}\vec{M}(\vec{r'})e^{jk.\vec{e_r}.\vec{r'}}dV'$
+\end{tcolorbox}
+
+On peut également montrer que:
+
+\begin{tcolorbox}[colframe=red,width=6cm]
+\centering
+$\vec{H}(\vec{r}) \approx j\omega\vec{e_r}\wedge(\vec{e_r}\wedge\vec{F}(\vec{r}))$
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=red,width=5cm]
+\centering
+$\vec{E}(\vec{r}) \approx j.\omega.\eta(\vec{e_r}\wedge\vec{F}(\vec{r}))$
+\end{tcolorbox}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\section{Principe d'équivalence}
+\begin{frame}
+\frametitle{Situations``équivalentes''}
+
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_charges_elec.png}
+
+    Champ électrique créé par 2 disques de charges électriques
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_charges_magn.png}
+
+    Champ magnétique créé par 2 disques de charges
+    magnétiques = champ d'un aimant
+    permanent?
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Conditions aux limites}
+Soit $S$ une surface de discontinuité entre 2 matériaux:
+
+\begin{figure}
+    \centering\includegraphics[width=0.3\textwidth]{figures/conditions_limites.png}
+\end{figure}
+
+A la traversée de $S$, les champs sont discontinus, et l'on a:
+
+\[\vec{J_S}=\vec{n}\wedge(\vec{H_2}-\vec{H_1})\]
+
+\[\vec{M_S}=-\vec{n}\wedge(\vec{E_2}-\vec{E_1})\]
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Principe d'équivalence}
+
+En l'absence de discontinuité des propriétés des matériaux, les
+champs sont continus à la traversée de $S$, et les courants surfaciques
+sont donc nuls.
+
+\vspace{0.5cm}
+Mais, si l'on souhaite calculer le champ du côté 2 uniquement, on
+peut remplacer le problème réel par un problème fictif où les champs
+seraient nuls du côté 1, mais avec l'existence de courants surfaciques,
+prenant en compte la discontinuité réelle.
+
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+    \centering\includegraphics[width=\textwidth]{figures/conditions_limites2.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tcolorbox}[colframe=red,width=4cm]
+\centering
+$\vec{J_S}=\vec{n}\wedge\vec{H_1}$
+
+$\vec{M_S}=-\vec{n}\wedge\vec{E_1}$
+\end{tcolorbox}
+\end{minipage}
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Principe d'équivalence}
+
+Dans la situation fictive équivalente, nous sommes en présence de
+courants électrique et de courants magnétiques portés par la surface.
+
+\vspace{0.5cm}
+Ainsi retrouve-t-on la notion de courant magnétique, dans les
+logiciels de calcul de champ: ces courants magnétiques permettent
+souvent de remplacer une situation complexe réelle, par une situation
+fictive, plus simple, mais qui comporte des courants magnétiques.
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\section{Diffraction par une surface fermée}
+\begin{frame}
+\frametitle{Diffraction par une surface fermée}
+Si $S$ est une surface fermée, le principe d'équivalence permet de
+calculer le problème de diffraction, et les champs à l'extérieur de $S$
+sont donnés par:
+
+\vspace{0.5cm}
+$\vec{E}(\vec{r})=\dfrac{1}{j4\pi\omega\epsilon}\left[\vec{grad}(div(\ ))+k^2\ \right]\ \iint_S \vec{J_S}(\vec{r'})\Psi(\vec{r}-\vec{r'})d^2r'-\dfrac{1}{4\pi}\vec{rot}\iint_S\vec{M_S}(\vec{r'})\Psi(\vec{r}-\vec{r'})d^2r'$
+
+$\vec{H}(\vec{r})=\dfrac{1}{j4\pi\omega\mu}\left[\vec{grad}(div(\ ))+k^2\ \right]\ \iint_S \vec{M_S}(\vec{r'})G(\vec{r}-\vec{r'})d^2r'+\dfrac{1}{4\pi}\vec{rot}\iint_S\vec{J_S}(\vec{r'})G(\vec{r}-\vec{r'})d^2r'$
+
+\vspace{0.5cm}
+En cherchant la limite des expressions ci-dessus en champ lointain,
+on obtient les formules de Kottler:
+
+\vspace{0.25cm}
+\begin{tcolorbox}[colframe=red,width=14cm]
+%$\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{2\lambda r}\left[\eta.\iint_S\left[(\vec{n}\wedge\vec{H}(\vec{r'}))\wedge\vec{u}\right]\wedge\vec{u}e^{-jk\vec{u}.\vec{r'}}d^2r'+\iint_S\left[\vec{n}\wedge\vec{E}(\vec{r'})\right]\wedge\vec{u}e^{jk\vec{u}.\vec{r'}}d^2r'\right]$
+\hspace{-0.25cm}$\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{2\lambda r}\left(\eta.\iint_S\vec{e_r}\wedge\left[(\vec{e_r}\wedge\vec{J_S}(\vec{r'}))\right]e^{jk\vec{e_r}.\vec{r'}}d^2r'+\iint_S\left[\vec{e_r}\wedge\vec{M}(\vec{r'})\right]e^{jk\vec{e_r}.\vec{r'}}d^2r'\right)$
+\end{tcolorbox}
+
+\vspace{0.25cm}
+$\vec{H}(\vec{r})=\dfrac{1}{\eta}\vec{e_r}\wedge\vec{E}(\vec{r})$
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Diffraction par une surface fermée}
+
+\underline{Remarques:}
+
+\vspace{0.5cm}
+Lorsque la surface $S$ est un plan infini, on montre que les deux intégrales
+de la page précédente sont rigoureusement égales.
+
+\vspace{0.5cm}
+On montre aussi que ces deux intégrales sont égales
+pour toute surface fermée.
+
+\begin{tcolorbox}[colframe=red,width=10cm]
+    %$\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{2\lambda r}\left[\eta.\iint_S\left[(\vec{n}\wedge\vec{H}(\vec{r'}))\wedge\vec{u}\right]\wedge\vec{u}e^{-jk\vec{u}.\vec{r'}}d^2r'+\iint_S\left[\vec{n}\wedge\vec{E}(\vec{r'})\right]\wedge\vec{u}e^{jk\vec{u}.\vec{r'}}d^2r'\right]$
+    $\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{2\lambda r}\left(\eta.\iint_S\vec{e_r}\wedge\left[(\vec{e_r}\wedge 2\vec{J_S}(\vec{r'}))\right]e^{jk\vec{e_r}.\vec{r'}}d^2r'\right)$
+    
+    \vspace{0.25cm}
+    ou
+
+    \vspace{0.25cm}
+    $\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{2\lambda r}\left(\iint_S\left[\vec{e_r}\wedge 2\vec{M}(\vec{r'})\right]e^{jk\vec{e_r}.\vec{r'}}d^2r'\right)$
+    \end{tcolorbox}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\section{Doublet magnétique}
+\begin{frame}
+    \frametitle{Doublet magnétique}
+On étudie le rayonnement d'une ``petite'' fente de surface $S$
+(petite devant la longueur d'onde) sur laquelle on applique un
+champ électrique tangentiel:
+    
+\begin{figure}
+    \centering\includegraphics[width=0.5\textwidth]{figures/doublet_magnetique.png}
+\end{figure}
+
+\begin{center}
+    Avec $M=E$
+\end{center}
+
+\end{frame}
+    
+%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Rayonnement du doublet magnétique}
+On obtient (pour une fente ``verticale'', portée par Oz):
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=7cm]
+    $\vec{H}(\vec{r})=\dfrac{j.M.S}{2.\eta.\lambda}\dfrac{e^{-jkr}}{r}\sin\theta.\vec{u_\theta}$
+\end{tcolorbox}
+\end{center}
+
+Le rayonnement d'un doublet magnétique est donc obtenu à partir du
+rayonnement du doublet électrique en remplaçant les lignes de champs
+du champ électrique par celles du champ magnétique. Et plus
+précisément:
+
+\begin{center}
+    \begin{tcolorbox}[colframe=red,width=3cm]
+\centering $I\ l \rightarrow M\ S$
+
+$E \rightarrow \eta \ H$
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+    
+%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Rayonnement du doublet magnétique}
+Les lignes de champ de E et H sont échangées, mais la puissance
+émise (par unité d'angle solide) varie de la même façon en fonction
+des directions:
+
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/rayonnement_doublet_magn_2D.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/rayonnement_doublet_magn_3D.png}
+\end{minipage}
+
+\vspace{0.5cm}
+\begin{center}
+$r(\theta,\varphi)=\sin^2\theta$
+\hspace{2cm}
+Directivité: $D=\dfrac{3}{2}$
+\end{center}
+\end{frame}
+    
+%%%%%%%%%%%%%%
+\section{Ouverture rayonnante plane}
+\begin{frame}
+    \frametitle{Ouverture rayonnante plane}
+\begin{figure}
+    \centering\includegraphics[width=0.25\textwidth]{figures/antenne_cornet.png}
+\end{figure}
+
+On peut calculer les propriétés de rayonnement d'une ouverture
+plane par la seule connaissance de la valeur du champ sur celle-ci:
+
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_ouverture.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/diagramme_ouverture.png}
+\end{minipage}
+    
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Ouverture rayonnante plane}
+
+\begin{figure}
+\centering\includegraphics[width=0.5\textwidth]{figures/principe_equivalence_ouverture.png}
+\end{figure}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Rayonnement à l'infini d'une ouverture plane}
+
+A l'infini, le champ électrique d'une ouverture plane dans le plan $(\vec{x};\vec{y})$ est donné par:
+
+$\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{2\lambda r}\left(\iint_S\left[\vec{e_r}\wedge 2\vec{M}(\vec{r'})\right]e^{jk\vec{e_r}.\vec{r'}}d^2r'\right)$
+
+\begin{tcolorbox}[colframe=red,width=13cm]
+    $\vec{E}(\vec{r})\underset{r \rightarrow \infty}{\approx}\dfrac{je^{-jkr}}{\lambda r}\left(\iint_S\left[\vec{e_r}\wedge (\vec{E}(x',y',0)\wedge\vec{e_z})\right]e^{jk(\sin\theta\cos\varphi x'+ \sin\theta\sin\varphi y')}dx'dy'\right)$
+    %$\vec{E}(r\ \vec{u_0}) \underset{r \rightarrow \infty}{\approx} \dfrac{je^{-jkr}}{\lambda r}u_{z0}\iint_S\vec{E}(x',y',0) e^{+jk(x'.u_{x0}+y'.u_{y0})}dx'dy'$
+\end{tcolorbox}
+
+\begin{figure}
+    \centering\includegraphics[width=0.3\textwidth]{figures/champ_ouverture2.png}
+\end{figure}
+
+\end{frame}
+    
+%%%%%%%%%%%%%%
+% \begin{frame}
+% \frametitle{Directivité d'une ouverture plane}
+
+% $U(u_x,u_y)=\dfrac{r^2||\vec{E}||^2}{2\eta}=\dfrac{1}{2\eta\lambda^2}u_z^2\left|\left|\iint_S\vec{E}(x',y',0)e^{jk(u_x\ x'+u_y\ y')}dx'dy'\right|\right|^2$
+
+% \vspace{0.25cm}
+% $U(u_x,u_y)$ est maximum pour une certaine direction $(u_{x0},u_{y0})$ de l'espace.
+
+% \vspace{0.25cm}
+% $U_{\max}=\dfrac{r^2||\vec{E}||^2}{2\eta}=\dfrac{1}{2\eta\lambda^2}u_{z0}^2\left|\left|\iint_S\vec{E}(x',y',0)e^{jk(u_{x0}\ x'+u_{y0}\ y')}dx'dy'\right|\right|^2$
+
+% \vspace{0.25cm}
+% $P_{ray}=\dfrac{1}{2\eta}\iint_S\left|\left|E_{xy}\right|\right|^2dx'dy'$
+
+% \vspace{0.5cm}
+% Donc
+
+% \begin{tcolorbox}[colframe=black,width=11cm]
+%     $D=4\pi\dfrac{U_{\max}}{P_{ray}}=\dfrac{4\pi}{\lambda^2}\dfrac{u_{z0}^2\left|\left|\iint_S\vec{E}(x',y',0)e^{jk(u_{x0}\ x'+u_{y0}\ y')}dx'dy'\right|\right|^2}{\iint_S\left|\left|\vec{E}_{xy}\right|\right|^2dx'dy'}$
+% \end{tcolorbox}
+
+% \end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Directivité d'une ouverture plane}
+%Or $u_{z0}^2\left|\left|\iint_S\vec{E}(x',y',0)e^{jk(u_{x0}\ x'+u_{y0}\ y')}dx'dy'\right|\right|^2 \leq S\iint_S\left|\left|E_{xy}\right|\right|^2dx'dy'$
+
+\vspace{0.5cm}
+%Donc la directivité présente un maximum absolu:
+La directivité d'une ouverture plane de surface $S$ présente un maximum absolu:
+
+\begin{center}
+    \begin{tcolorbox}[colframe=red,width=4cm]
+        $D_{\max}=\dfrac{4\pi S}{\lambda^2}$
+    \end{tcolorbox}
+\end{center}
+
+\vspace{0.5cm}
+L'égalité peut être obtenue pour une ouverture dont le champ électrique $\vec{E}(x',y',0)e^{jk(\sin\theta\cos\varphi x'+\sin\theta\sin\varphi y')}$ est constant sur toute la surface de l'ouverture.
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{\vspace{-0.5cm}maximum sur la normale\\
+\vspace{-0.5cm}Cas d'une ouverture à polarisation linéaire, avec un rayonnement}
+
+En prenant, par exemple, une polarisation parallèle à Oy:
+
+\begin{center}
+    \begin{tcolorbox}[colframe=red,width=6cm]
+        $D_{\max}=k_{apperture}\dfrac{4\pi S}{\lambda^2}$
+    \end{tcolorbox}
+\end{center}
+
+Où le \textbf{coefficient d'efficacité d'ouverture} $k_{apperture}$
+est donné par:
+
+\begin{tcolorbox}[colframe=red,width=11cm]
+    $k_{apperture}=\dfrac{S{efficace}}{S_{\text{géométrique}}}=\dfrac{\left|\left|\iint_S E_y dx'dy'\right|\right|^2}{S_{\text{géométrique}}\iint_S\left|\left|E_{y}\right|\right|^2dx'dy'}\leq 1$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+Une valeur $50\% \leq k \leq 80\%$ est assez courante.
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\section{Cornet rectangulaire et circulaire}
+\begin{frame}
+\frametitle{Cornet rectangulaire}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_cornet.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_cornet2.png}
+\end{minipage}
+
+\centering
+\vspace{-1cm}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.6\textwidth]{figures/diagramme_cornet.png}
+\end{minipage}
+
+\end{frame}
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet rectangulaire}
+
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/diagramme_cornet_3D.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=0.7\textwidth]{figures/diagramme_cornet_2D.png}
+\end{minipage}
+
+Surface de l'ouverture du cornet: 67,56 mm x 49,53 mm
+
+Valeur de l'efficacité de l'ouverture?
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet rectangulaire: modèle approché}
+On modélise un cornet de dimensions $2a \times 2b$ par une ouverture sur
+laquelle existe un champ du type ``TE$_{10}$ dilaté'', avec une phase
+sphérique:
+
+\begin{figure}
+    \centering\includegraphics[width=0.7\textwidth]{figures/modele_cornet.png}
+\end{figure}
+
+$E_y(x,y)=E_0\cos\left(\dfrac{\pi x}{2a}\right)e^{-j\dfrac{2\pi}{\lambda}\sqrt{x^2+y^2+d^2}}$
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet rectangulaire: modèle approché}
+
+Soit, pour un cornet tel que 2a = 5$\lambda$, 2b = 2.5$\lambda$, d = 5$\lambda$:
+
+\begin{figure}
+    \centering\includegraphics[width=0.7\textwidth]{figures/champ_cornet3.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet rectangulaire: modèle approché}
+Diagramme de rayonnement:
+
+\begin{figure}
+    \centering\includegraphics[width=0.7\textwidth]{figures/diagramme_cornet_3D2.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet rectangulaire: modèle approché}
+Diagramme de rayonnement:
+
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/diagramme_cornet_2D2.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/diagramme_cornet_2D3.png}
+\end{minipage}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Intérêt d'un cornet, par rapport à
+un simple guide d'onde ouvert}
+
+Plus grande surface d'ouverture $\Rightarrow$ antenne plus directive
+
+\vspace{1cm}
+Coefficient de réflexion quasi nul dans une ``large'' bande $\Rightarrow$
+meilleure adaptation
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet circulaire: modèle approché}
+Mode TE$_{11}$:
+
+\begin{minipage}{0.35\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/cornet_circulaire.png}
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/champ_cornet_circulaire.png}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet circulaire: modèle approché}
+
+Composante verticale du champ sur l'ouverture:
+\begin{figure}
+\centering\includegraphics[width=0.8\textwidth]{figures/champ_cornet_circulaire2.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet circulaire: modèle approché}
+Diagramme en polarisation verticale:
+
+\begin{figure}
+    \centering\includegraphics[width=0.8\textwidth]{figures/diagramme_cornet_circulaire.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet circulaire: modèle approché}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/diagramme_cornet_circulaire_2D.png}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/diagramme_cornet_circulaire_2D2.png}
+\end{minipage}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet circulaire: modèle approché}
+
+Composante horizontale du champ sur l'ouverture:
+
+\begin{figure}
+    \centering\includegraphics[width=0.8\textwidth]{figures/champ_cornet_circulaire_horizontal.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cornet circulaire: modèle approché}
+Diagramme de rayonnement en polarisation croisée:
+
+\begin{figure}
+    \centering\includegraphics[width=0.8\textwidth]{figures/diagramme_cornet_circulaire_croise.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\section{Antenne à réflecteur parabolique}
+\begin{frame}
+\frametitle{Antenne à réflecteur parabolique}
+
+\begin{minipage}{0.35\textwidth}
+    \centering\includegraphics[width=\textwidth]{figures/parabole.png}
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+    \centering Ouverture équiphase:
+    
+    \includegraphics[width=0.5\textwidth]{figures/equiphase_parabole.png}
+
+    FHM = constante
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Antenne à réflecteur parabolique}
+
+Ouverture équi-phase $\Rightarrow$ Gain et directivité maximum possible
+pour la surface choisie.
+
+\vspace{1cm}
+On obtient souvent une valeur de k proche de 0,8.
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,823 @@
+\documentclass[
+10pt,
+aspectratio=169,
+]{beamer}
+
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tcolorbox}
+\usepackage{beamerthemeensea}
+
+
+\title{Antennes – ESC}
+\subtitle{Cours 3: Antennes type ``dipôle''}
+\date{\the\year}
+\author{Alexis MARTIN}
+%\institute{ENSEA}
+
+\usetheme{ensea}  
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+
+
+\section{Rayonnement d'une source quelconque de courants 
+électriques}
+\begin{frame}
+\frametitle{Rayonnement d'une source quelconque de courants 
+électriques}
+\underline{Potentiel vecteur électrique}
+
+$div(\vec{B})=0 \Rightarrow$ Il existe un vecteur $\vec{A}$ appelé \textbf{potentiel vecteur électrique} tel que: $\vec{B}=\vec{rot}(\vec{A})$
+
+\vspace{0.5cm}
+L'equation de propagation du potentiel vecteur électrique est (en utilisant la jauge de Lorentz): 
+\[\Delta \vec{A}+k^2\dfrac{\partial^2\vec{A}}{\partial t^2}=-\mu\vec{J}\]
+
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{0.5cm}
+La solution de cette équation est:
+
+\begin{tcolorbox}[colframe=red,width=7cm]
+\centering
+$\vec{A}(\vec{r})=\dfrac{\mu}{4\pi}\iiint_{sources} \vec{J}(\vec{r'})\dfrac{e^{-jkR}}{R}dV'$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{-0.5cm}
+\raggedleft\includegraphics[width=0.85\textwidth]{figures/calcul_rayonnement.png}
+\vspace{-0.3cm}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Rayonnement d'une source quelconque de courants 
+électriques}
+
+On note $\Psi(\vec{r})=\dfrac{e^{-jk||\vec{r}||}}{||\vec{r}||}$
+
+\begin{tcolorbox}[colframe=red,width=7cm]
+\centering
+$\vec{A}(\vec{r})=\dfrac{\mu}{4\pi}\iiint_{sources}\vec{J}(\vec{r'})\Psi(\vec{r}-\vec{r'})dV'$
+\end{tcolorbox}
+
+On en déduit le champ électrique rayonné:
+
+\begin{tcolorbox}[colframe=red,width=6.5cm]
+\centering
+$\vec{E}=\dfrac{1}{j\omega\epsilon\mu}\left(\vec{grad}(div(\vec{A}))+k^2\vec{A}\right)$
+\end{tcolorbox}
+
+Et le champ magnétique rayonné:
+\begin{tcolorbox}[colframe=red,width=4cm]
+\centering
+$\vec{H}=\dfrac{1}{\mu}\vec{rot}(\vec{A})$
+\end{tcolorbox}
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Rayonnement en champ lointain}
+En champ lointain ($r \to \infty$), on peut faire l'approximation:
+
+\begin{itemize}
+    \item Pour les phases: $||\vec{r}-\vec{r'}|| \approx ||\vec{r}|| - \vec{e_r}.\vec{r'}$
+    \item Pour les amplitudes: $||\vec{r}-\vec{r'}|| \approx ||\vec{r}||$
+\end{itemize}
+
+\vspace{-0.25cm}
+\[\Psi(\vec{r}-\vec{r'}) \approx \dfrac{e^{-jk||\vec{r}||}}{||\vec{r}||}e^{jk.\vec{e_r}.\vec{r'}}\]
+
+\begin{tcolorbox}[colframe=red,width=9cm]
+\centering
+$\vec{A}(\vec{r}) \approx \dfrac{\mu}{4\pi}\dfrac{e^{-jk||\vec{r}||}}{||\vec{r}||}\iiint_{sources}\vec{J}(\vec{r'})e^{jk.\vec{e_r}.\vec{r'}}dV'$
+\end{tcolorbox}
+
+On peut également montrer que:
+
+\begin{tcolorbox}[colframe=red,width=6cm]
+\centering
+$\vec{E}(\vec{r}) \approx j\omega\vec{e_r}\wedge(\vec{e_r}\wedge\vec{A}(\vec{r}))$
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=red,width=5cm]
+\centering
+$\vec{H}(\vec{r}) \approx \dfrac{-j.\omega}{\eta}(\vec{e_r}\wedge\vec{A}(\vec{r}))$
+\end{tcolorbox}
+
+
+\end{frame}
+
+
+
+% \begin{frame} 
+% \frametitle{Rayonnement d'une source quelconque de courants
+% électriques}
+
+
+% \begin{minipage}{0.45\textwidth}
+%     \begin{figure}
+%     \includegraphics[width=\textwidth]{figures/antenne_source.png}
+%     \end{figure}
+% \end{minipage}
+% \begin{minipage}{0.45\textwidth}
+% Les champs ``émis'' par une source
+% quelconque $\Omega$ de courants
+% volumique sont donnés par:
+
+% \[G(\vec{r})=\dfrac{e^{-jk||\vec{r}||}}{4\pi||\vec{r}||}\]
+
+% \end{minipage}
+
+
+% \begin{tcolorbox}[colframe=red,width=11cm]
+% $\vec{E}(\vec{r})=\dfrac{1}{j\omega\epsilon}\left[\vec{grad}(div())+k^2\right]\iiint_\Omega \vec{J}(\vec{r'})G(\vec{r}-\vec{r'})d^3r'$
+
+% $\vec{H}(\vec{r})=\vec{rot}\left[\iiint_\Omega \vec{J}(\vec{r'})G(\vec{r}-\vec{r'})d^3r'\right]$
+% \end{tcolorbox}
+
+% \end{frame}
+
+%%%%%%%%%%%%
+\section{Antenne type ``doublet''}
+\begin{frame}
+\frametitle{Antenne type ``doublet''}
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/doublet.png}
+\end{figure}
+
+
+L'antenne doublet est un petit dipôle, sur lequel le courant est supposé
+constant, comme proposé dans l'approximation ci-dessus.
+
+Un dipôle petit devant la longueur d'onde ne constitue donc pas un
+dipôle électrique, au sens propre, mais il en réalise une excellente
+approximation.
+
+L'antenne doublet est la première antenne réalisée expérimentalement
+par Hertz.
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Antenne doublet électrique}
+
+Le dipôle est dit ``miniature'' si $2.l\  <<\ \lambda$.
+
+\vspace{0.5cm}
+\begin{minipage}{0.45\textwidth}
+Selon l'approximation de la ligne sans pertes équivalente, le courant
+le long de l'antenne est donc donné par:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/dipole_miniature.png}
+\end{figure}
+\end{minipage}
+
+\vspace{0.5cm}
+\begin{minipage}{0.45\textwidth}
+L'antenne étant très petite, on peut réaliser l'approximation suivante,
+pour l'allure du courant sur le fil:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/dipole_miniature2.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Rayonnement du doublet électrique}
+La densité de courant sur l'antenne est donnée par
+($\vec{e_z}$ est le vecteur unitaire de l'ae Oz):
+
+\[\vec{J}(\vec{r'})=2.I.l.\delta(\vec{r'}).\vec{e_z}\]
+
+Le potentiel vecteur électrique est donc:
+
+\[\vec{A}(\vec{r})=\dfrac{I.l.\mu_0}{2\pi}.\Psi(\vec{r}).\vec{e_z}\]
+
+Les champs sont alors donnés par:
+
+\[\vec{E}(\vec{r})=\dfrac{I.l}{j2\pi\omega\epsilon}\left[\vec{grad}(div())+k^2\right]\left(\Psi(\vec{r}).\vec{e_z}\right)\]
+\[\vec{H}(\vec{r})=\dfrac{I.l}{2\pi}.\vec{rot}\left[\Psi(\vec{r}).\vec{e_z}\right]\]
+
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Rayonnement du doublet électrique}
+Le calcul donne:
+
+\vspace{-0.75cm}
+\[\begin{bmatrix}
+    E_r \\ E_\theta \\ E_\varphi
+\end{bmatrix} = \dfrac{e^{-j.k.r}}{r}.\dfrac{I.l.\eta}{j.\lambda}.
+    \begin{bmatrix}
+    \cos\theta\left(\dfrac{2.j}{k.r}+\dfrac{2}{k^2.r^2}\right) \\
+    -\sin\theta\left(1-\dfrac{j}{k.r}-\dfrac{1}{k^2.r^2}\right)\\
+    0
+\end{bmatrix}\]
+
+\[\begin{bmatrix}
+    H_r \\ H_\theta \\ H_\varphi
+\end{bmatrix} =j.\dfrac{e^{-j.k.r}}{r}.\dfrac{I.l}{\lambda}.
+\begin{bmatrix}
+    0 \\
+    0 \\
+    \sin\theta\left(1-\dfrac{j}{k.r}\right)
+\end{bmatrix}\]
+
+Soit l'approximation en champ lointain:
+
+\vspace{-0.25cm}
+\[\lim_{r \to \infty} \begin{bmatrix}
+    E_r \\ E_\theta \\ E_\varphi
+\end{bmatrix} \approx -\dfrac{e^{-j.k.r}}{r}.\dfrac{j.\eta.I.l}{\lambda}.
+\begin{bmatrix}
+    0 \\
+    -\sin\theta\\
+    0
+\end{bmatrix} = \dfrac{e^{-j.k.r}}{r}.\dfrac{j.\eta.I.l}{\lambda}.\sin \theta \vec{e_\theta}
+\]
+
+\[\lim_{r \to \infty} \begin{bmatrix}
+    H_r \\ H_\theta \\ H_\varphi
+\end{bmatrix} \approx j.e^{-j.k.r}.\dfrac{1}{2.r}.\dfrac{2.I.l}{\lambda}.
+\begin{bmatrix}
+    0 \\
+    0\\
+    \sin\theta
+\end{bmatrix} = j.e^{-j.k.r}.\dfrac{1}{2.r}.\dfrac{2.I.l}{\lambda}.\sin \theta \vec{e_\varphi}
+\]
+
+\end{frame}
+
+%%%%%%%%%%%%%
+
+\begin{frame}
+    \frametitle{Rayonnement du doublet électrique}
+
+%\vspace{-0.5cm}
+\begin{minipage}{0.35\textwidth}
+    On retiendra:
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+\begin{tcolorbox}[colframe=red,width=7cm]
+    $\vec{E}(\vec{r})=\dfrac{j.\eta.I.l_{tot}}{2\lambda}\dfrac{e^{-j.k.r}}{r}.\sin\theta.\vec{e_\theta}$
+    
+    $\vec{H}(\vec{r})=\dfrac{j.I.l_{tot}}{2\lambda}\dfrac{e^{-j.k.r}}{r}.\sin\theta.\vec{e_\varphi}$
+\end{tcolorbox}
+\end{minipage}
+
+\begin{minipage}{0.35\textwidth}
+Vecteur de Poynting radial: 
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+\begin{tcolorbox}[colframe=red,width=8cm]
+    $\vec{P}=\dfrac{1}{2}\vec{E}\wedge\vec{H}^* = \dfrac{\eta}{2}{\left(\dfrac{I}{2.r}\right)}^2.{\left(\dfrac{l}{\lambda}\right)}^2 .\sin^2\theta.\vec{e_r}$
+\end{tcolorbox}
+\end{minipage}
+
+\begin{minipage}{0.35\textwidth}
+Onde localement plane:
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+\begin{tcolorbox}[colframe=red,width=4cm]
+    $\vec{H}(\vec{r})=\dfrac{1}{\eta}(\vec{e_r}\wedge\vec{E})$
+
+    $\vec{E}(\vec{r})=\eta (\vec{H} \wedge \vec{e_r})$
+\end{tcolorbox}
+\end{minipage}
+
+\begin{minipage}{0.35\textwidth}
+Caractéristique de rayonnement:
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+ \begin{tcolorbox}[colframe=red,width=4cm]
+    $r(\theta,\varphi)=\sin^2\theta$
+\end{tcolorbox}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Rayonnement du doublet électrique}
+
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}
+    \includegraphics[width=\textwidth]{figures/Rayonnement_doublet.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+    \includegraphics[width=\textwidth]{figures/Rayonnement_doublet2.png}
+\end{figure}
+\end{minipage}
+
+\vspace{0.5cm}
+\begin{center}
+Directivité: $D=\dfrac{3}{2}$
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Rayonnement du doublet électrique}
+En champ lointain, les lignes de champ électrique
+sont des cercles portés par $\vec{e_\theta}$.
+
+\vspace{0.5cm}
+La polarisation est linéaire, contenue dans un plan vertical:
+
+\begin{figure}
+    \includegraphics[width=0.4\textwidth]{figures/champ_doublet.png}
+\end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Impédance d'entrée du doublet électrique}
+\begin{minipage}{0.45\textwidth}
+$R_r=\dfrac{80\pi^2.l_{tot}^2}{\lambda^2}$
+
+$X = - R_C \cot\left(\dfrac{\pi l_{tot}}{\lambda}\right)$ (\textbf{avec un modèle de ligne sans pertes})
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/impedance_doublet.png}
+\end{figure}
+\end{minipage}
+
+A.N. avec $l_{tot}=\dfrac{\lambda}{20}$ et $R_C=200\Omega$:
+
+$R_r=1.9 \Omega$ et $X=-615 \Omega$
+
+$\rightarrow$ Le doublet électrique est très dificile à adapter, et a certainement un mauvais rendement.
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\section{Antenne type ``dipôle''}
+\begin{frame}
+\frametitle{Antenne ``type dipôle''}
+
+\begin{minipage}{0.45\textwidth}
+Un signal électrique est appliqué sur un fil de
+longueur $2\ l$ selon le montage:
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/dipole.png}
+\end{figure}
+\end{minipage}
+
+Il est possible de calculer une valeur approchée du courant sur le fil
+selon le modèle de la ligne sans pertes équivalente:
+
+\begin{figure}
+\includegraphics[width=0.7\textwidth]{figures/dipole_courant.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Antenne ``type dipôle''}
+On a alors:
+
+\[V(z)=V_{\max}\cos\left(\beta (l-z)\right)\]
+\[I(z)=j.\dfrac{V_{\max}}{R_c}\cos\left(\beta (l-z)\right)\]
+
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/dipole_courant2.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/dipole_tension.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Antenne ``type dipôle''}
+
+\begin{minipage}{0.45\textwidth}
+$V_{\max}$ varie avec la fréquence selon:
+
+\[V_{\max}=\dfrac{V_g}{\sqrt{\cos^2\left(\dfrac{\omega l}{v}\right) + \dfrac{R_g^2}{R_c^2}\sin^2\left(\dfrac{\omega l}{v}\right)}}\]
+
+\vspace{1cm}
+
+Le cas des dipôles correspond
+au 1er cas: celui où $R_g << R_c$
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{figures/dipole_tension_max.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Fréquence de raisonnance du dipôle}
+Les fréquences de résonance des antennes type dipôle s'obtiennent pour:
+
+\[\dfrac{\omega l}{v}=\dfrac{\pi}{2},\ \dfrac{3\pi}{2},\ \dfrac{5\pi}{2}\ \dots \]
+
+
+Soit: $l_{tot} = \dfrac{\lambda}{2},\  \dfrac{3\lambda}{2},\ \dfrac{5\lambda}{2},\ \dots$
+
+\vspace{0.5cm}
+Le premier cas est le cas le plus courant, cette antenne est appelée:
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=6cm]
+    \centering\textbf{Dipôle demi-onde}
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Dipôle demi-onde}
+Selon l'approximation de la ligne sans pertes équivalente, le courant
+le long de l'antenne est donc donné par:
+
+\begin{minipage}{0.45\textwidth}
+    Pour $|z| \leq \dfrac{\lambda}{4}$:
+\[I(z)=I(0).\cos\left(\dfrac{2\pi z}{\lambda}\right)\]
+
+Et l'impédance d'entrée:
+\[Z_e=-j.R_c\cot\left(\dfrac{\pi l_{tot}}{\lambda}\right)\]
+
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{figures/courant_dipole.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Rayonnement du dipôle demi-onde}
+
+\begin{minipage}{0.45\textwidth}
+\[\vec{E}(\vec{r})=j\dfrac{\eta I(0)}{2\pi r}e^{-j.k.r}\dfrac{\cos\left(\dfrac{\pi}{2}\cos\theta\right)}{\sin\theta}\vec{u_\theta}\]
+
+\[U(\theta,\varphi)=\dfrac{\eta|I(0)|^2}{8\pi^2}.\dfrac{\cos^2\left(\dfrac{\pi}{2}\cos\theta\right)}{\sin^2\theta}\]
+
+\[r(\theta,\varphi)=\dfrac{\cos^2\left(\dfrac{\pi}{2}\cos\theta\right)}{\sin^2\theta}\]
+
+\vspace{0.5cm}
+\centering Directivité = 1.64
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.7\textwidth]{figures/dipole_radiation2D.png}
+\end{figure}
+
+\vspace{-1cm}
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/dipole_radiation3D.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Impédance d'entrée du dipôle demi-onde}
+\begin{minipage}{0.45\textwidth}
+$R_r=73\Omega$ 
+
+\vspace{0.5cm}
+$X=0 \Omega$ (à la fréquence de raisonnance)
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/impedance_doublet.png}
+\end{figure}
+\end{minipage}
+
+\begin{minipage}{0.45\textwidth}
+Variations de X en fonction de la fréquence:
+
+\vspace{0.5cm}
+$X = - R_c \cot\left(\dfrac{2\pi l}{\lambda}\right)$
+
+\vspace{0.5cm}
+$R_c = 200 \ln\left(\dfrac{l}{a}\right)$
+
+\vspace{0.5cm}
+$a$ = rayon du fil
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{figures/impedance_dipole.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Simulation 3D d'un dipôle demi-onde}
+
+\vspace{-0.25cm}
+\centering Courant sur le fil:
+
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.6\textwidth]{figures/simu_courant_dipole.png}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.6\textwidth]{figures/simu_courant_dipole2.png}
+    \end{figure}
+\end{minipage}
+
+Digramme de rayonnement:
+
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.6\textwidth]{figures/simu_diagramme_dipole_2D.png}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.6\textwidth]{figures/simu_diagramme_dipole_3D.png}
+    \end{figure}
+\end{minipage}
+
+\end{frame}
+%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Alimentation d'un dipôle demi-onde}
+\vspace{-1cm}
+\begin{minipage}{0.45\textwidth}
+    
+    Alimentation incorrecte:
+
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.5\textwidth]{figures/dipole_alimentation_incorrecte.png}
+\end{figure}
+\end{minipage}
+
+\vspace{-0.5cm}
+Alimentation par un balun:
+
+\begin{minipage}{0.3\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.8\textwidth]{figures/dipole_balun.png}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.8\textwidth]{figures/dipole_balun2.png}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+    \begin{figure}
+    \includegraphics[width=0.8\textwidth]{figures/dipole_balun3.png}
+    \end{figure}
+\end{minipage}
+
+\vspace{-0.5cm}
+
+\begin{flushright}
+{\small Wikipédia}
+\end{flushright}
+\end{frame}
+
+%%%%%%%%%%%%%%
+
+\section{Effet image}
+\begin{frame}
+\frametitle{Effet image}
+
+Au niveau d'un plan parfaitement conducteur, le champ électrique est normal au plan, et le champ magnétique est tangent.
+
+Il en résulte que le champ créé par une charge électrique ponctuelle au dessus d'un plan de masse est équivalent à celui créé par cette charge et son image, qui est une charge de même valeur mais de signe opposé, placée symétriquement par rapport au plan de masse. 
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/effet_image_charges.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Effet image}
+
+\begin{minipage}{0.35\textwidth}
+Il en va de même pour des charges en mouvement, comme dans le cas d'un dipôle électrique placé au-dessus d'un plan de masse.
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/effet_image_dipole.png}
+\end{figure}
+\end{minipage}
+
+\begin{minipage}{0.35\textwidth}
+On peut donc généraliser l'effet image à toute répartition de courants au-dessus d'un plan de masse.
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/effet_image_courant.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%
+
+% \begin{frame}
+% \frametitle{Propriétés de symétrie des champs}
+% Les propriétés de symétrie des équations de Maxwell impliquent que,
+% lors d'une symétrie par rapport à un plan:
+
+% \begin{itemize}
+%     \item Le champ électrique a les mêmes propriétés de symétrie que
+% les courants électriques (courants symétriques $\Leftrightarrow$ E symétrique, ou
+% courants antisymétriques $\Leftrightarrow$ E antisymétrique).
+
+%     \item Le champ magnétique a des propriétés de symétrie opposées à
+% celles des courants électriques (courants symétriques $\Leftrightarrow$ H
+% antisymétrique, ou courants antisymétriques $\Leftrightarrow$ H symétrique).
+% \end{itemize}
+
+% Donc, si les courants sont antisymétriques par rapport à un plan, le
+% champ électrique sera aussi antisymétrique, ce qui implique que la
+% champ électrique est normal à ce plan.
+
+% \vspace{0.5cm}
+% \textit{L'effet image résulte de cette remarque.}
+
+% \end{frame}
+%%%%%%%%%%%%%%
+
+% \begin{frame}
+% \frametitle{Effet image}
+
+% \begin{minipage}{0.45\textwidth}
+% Soit une répartition de champs vérifiant les équations de Maxwell:
+% \end{minipage}
+% \begin{minipage}{0.45\textwidth}
+% \begin{figure}
+% \includegraphics[width=0.7\textwidth]{figures/effet_image.png}
+% \end{figure}
+% \end{minipage}
+
+% \begin{minipage}{0.45\textwidth}
+% Par symétrie, la répartition suivante vérifie aussi les équations de
+% Maxwell:
+% \end{minipage}
+% \begin{minipage}{0.45\textwidth}
+% \begin{figure}
+% \includegraphics[width=0.7\textwidth]{figures/effet_image2.png}
+% \end{figure}
+% \end{minipage}
+
+% \begin{minipage}{0.45\textwidth}
+% Ainsi que la superposition des deux répartitions ci-dessus:
+% \end{minipage}
+% \begin{minipage}{0.45\textwidth}
+% \begin{figure}
+% \includegraphics[width=0.7\textwidth]{figures/effet_image_sup.png}
+% \end{figure}
+% \end{minipage}
+
+% \end{frame}
+% %%%%%%%%%%%%%%
+
+% \begin{frame}
+% \frametitle{Effet image}
+% Sur le plan de symétrie ci-dessus, E est normal, et H tangentiel.
+
+% Si on ``métallise'' le plan de symétrie, les champs restent donc
+% inchangés des deux côtés.
+
+% Les deux situations suivantes donnent donc les mêmes champs du côté
+% des $z > 0$:
+
+% \begin{itemize}
+% \item \begin{minipage}{0.45\textwidth}
+% Sans plan de masse
+% \end{minipage}\begin{minipage}{0.45\textwidth}
+%     \begin{figure}
+%     \includegraphics[width=0.8\textwidth]{figures/effet_image_sup.png}
+%     \end{figure}
+% \end{minipage}
+% \item \begin{minipage}{0.45\textwidth}
+%     Avec plan de masse (plan $z=0$)
+%     \end{minipage}\begin{minipage}{0.45\textwidth}
+%         \begin{figure}
+%         \includegraphics[width=0.8\textwidth]{figures/effet_image.png}
+%         \end{figure}
+%     \end{minipage}
+% \end{itemize}
+
+% \end{frame}
+%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Analogie optique}
+
+Pour un observateur placé au-dessus du plan de masse, les
+deux scènes suivantes sont équivalentes:
+
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/effet_image_optique.png}
+\end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Effet image ``électrique''}
+Les champs au-dessus du plan de masse sont identiques
+dans les deux situation suivantes:
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{figures/effet_image_elec.png}
+\end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%
+
+\section{Dipôle quart d'onde}
+\begin{frame}
+\frametitle{Dipôle quart d'onde}
+Un dipôle quart d'onde se comporte comme un demi-onde, pour le
+courant et les champs au-dessus du plan de masse:
+
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{figures/dipole_quart_onde.png}
+\end{figure}
+
+\end{frame}
+%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Dipôle quart d'onde}
+\begin{center}
+\begin{minipage}{0.22\textwidth}
+    \includegraphics[width=\textwidth]{figures/dipole_quart_onde2.png}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+    \includegraphics[width=\textwidth]{figures/dipole_quart_onde3.png}
+\end{minipage}
+\begin{minipage}{0.22\textwidth}
+    \includegraphics[width=\textwidth]{figures/dipole_quart_onde4.png}
+\end{minipage}
+\end{center}
+
+$R_r=37\ \Omega$
+
+$R_c=60 \ln\left(\dfrac{l}{a}\right)$
+
+$D=1.64$ ou $D=3.28$ selon que l'on considère
+l'espace entier ou bien un 1/2 espace.
+
+\end{frame}
+
+\end{document}

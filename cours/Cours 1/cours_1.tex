@@ -1,0 +1,756 @@
+\documentclass[
+10pt,
+aspectratio=169,
+]{beamer}
+
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tcolorbox}
+\usepackage{beamerthemeensea}
+
+
+\title{Antennes – ESC}
+\subtitle{Cours 1: Equations de Maxwell et propagation des ondes}
+\date{\the\year}
+\author{Alexis MARTIN}
+%\institute{ENSEA}
+
+\usetheme{ensea}  
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+
+\section{Equations de Maxwell}
+\begin{frame} 
+\frametitle{Equations de Maxwell} 
+
+\begin{itemize}
+\item Grandeurs instantannées: \hspace{1cm} $\vec{\bm{E}}(\vec{r},t),\vec{\bm{B}}(\vec{r},t),\vec{\bm{H}}(\vec{r},t),\vec{\bm{J}}(\vec{r},t),\vec{\bm{D}}(\vec{r},t), $
+
+\item Equations de Maxwell: \\ 
+\begin{minipage}{0.45\textwidth}
+\begin{center} \begin{tcolorbox}[colframe=red,width=6.5cm]
+\center$\vec{rot}(\vec{\bm{E}}(\vec{r},t))=-\dfrac{\partial\vec{\bm{B}}(\vec{r},t)}{\partial t}$\\
+$\vec{rot}(\vec{\bm{H}}(\vec{r},t))=\vec{\bm{J}}(\vec{r},t)+\dfrac{\partial\vec{\bm{D}}(\vec{r},t)}{\partial t}$
+\end{tcolorbox}\end{center}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{center} \begin{tcolorbox}[colframe=red,width=4cm]
+\center$div(\vec{\bm{B}}(\vec{r},t))=0$\\
+\vspace{0.5cm}
+$div(\vec{\bm{E}}(\vec{r},t))=\dfrac{\rho}{\epsilon_0}$
+\end{tcolorbox}\end{center}
+\end{minipage}
+\end{itemize}
+
+\begin{minipage}[t]{0.45\textwidth}
+\begin{itemize}
+
+\item Conservation de la charge: \\
+$div(\vec{\bm{J}}(\vec{r},t))+\dfrac{\partial\rho}{\partial t}=0$
+
+\item Relations constitutives du milieu: 
+\begin{itemize}
+\item $\vec{\bm{D}}(\vec{r},t)=\epsilon_{3\times 3}\vec{\bm{E}}(\vec{r},t)$
+\item $\vec{\bm{B}}(\vec{r},t)=\mu_{3\times 3}\vec{\bm{H}}(\vec{r},t)$
+\item $\vec{\bm{J}}(\vec{r},t)=\sigma_{3\times 3}\vec{\bm{E}}(\vec{r},t)$
+
+\end{itemize}
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+\begin{itemize}
+    \item $\vec{\bm{E}}(\vec{r},t)$: champ électrique (V/m)
+    \item $\vec{\bm{B}}(\vec{r},t)$: induction magnétique (T)
+    \item $\vec{\bm{H}}(\vec{r},t)$: champ magnétique (A/m)
+    \item $\vec{\bm{D}}(\vec{r},t)$: induction électrique (C/m$^2$)
+    \item $\vec{\bm{J}}(\vec{r},t)$: densité de courant (A/m$^2$)
+\end{itemize}
+
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Equations de Maxwell} 
+
+En régime sinusoïdal, découplage temps – position:
+
+$\vec{\bm{E}}(\vec{r},t)=\vec{E_m}(\vec{r})\cos(\omega t + \varphi(\vec{r}))$
+
+\vspace{1cm}
+On associe $\vec{\bm{E}}(\vec{r},t)$ à sa représentation complexe $\vec{E}(\vec{r})$:
+
+\begin{center} \begin{tcolorbox}[colframe=red,width=6cm]
+$\vec{\bm{E}}(\vec{r},t)\rightarrow\vec{E}(\vec{r})=\vec{E_m}(\vec{r})e^{j\varphi(\vec{r})}$
+\end{tcolorbox}\end{center}
+
+\vspace{0.5cm}
+Lorsque l'on utilise la représentation complexe, le temps n'intervient plus. 
+Mais toutes les grandeurs ont une phase!
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Représentation d'un champ complexe} 
+
+On peut uniquement représenter la partie réelle (composante en phase), et la partie imaginaire des champs (composante en quadrature).
+
+Représentation en amplitude de $E_{phi}$ (symétrie cylindrique):
+
+\begin{figure}
+\includegraphics[width=0.35\textwidth]{figures/img_rep_champ_amp.png}\hspace{1cm}
+\includegraphics[width=0.35\textwidth]{figures/img_rep_champ_amp2.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Représentation d'un champ complexe}
+
+Représentation vectorielle:
+\begin{figure}
+\includegraphics[width=0.35\textwidth]{figures/img_rep_champ_vec.png}\hspace{1cm}
+\includegraphics[width=0.35\textwidth]{figures/img_rep_champ_vec2.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Equations de Maxwell dans un milieu homogène et isotrope}
+En milieu homogène et isotrope, les constantes caractéristiques du matériau ($\epsilon$, $\mu$, $\sigma$) sont indépendantes du point et de la direction d'observation. Les équations deviennent alors:
+
+\begin{center} \begin{tcolorbox}[colframe=red,width=7cm]
+\center$\vec{rot}(\vec{\bm{E}}(\vec{r},t))=-j\ \omega\ \mu\ \vec{\bm{H}}(\vec{r},t)$\\
+$\vec{rot}(\vec{\bm{H}}(\vec{r},t))=\vec{\bm{J}}(\vec{r},t)+j\ \omega\ \epsilon\ \vec{\bm{E}}(\vec{r},t)$
+\end{tcolorbox}\end{center}
+
+Et en l'absence de sources (c'est à dire en l'absence de courant extérieur):
+\begin{center}
+$\vec{rot}(\vec{\bm{E}}(\vec{r},t))=-j\ \omega\ \mu\ \vec{\bm{H}}(\vec{r},t)$\\
+$\vec{rot}(\vec{\bm{H}}(\vec{r},t))=j\ \omega\ \epsilon\ \vec{\bm{E}}(\vec{r},t)$
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Puissance ``rayonnée'' à travers une surface}
+
+Soit $S_a$ une surface fermée. La puissance traversant cette surface est donnée par:
+\begin{center} \begin{tcolorbox}[colframe=red,width=7cm]
+\center\underline{Vecteur de Poynting}
+
+$\vec{P}=\dfrac{1}{2}(\vec{E}\wedge\vec{H^*})$
+
+$P=Re(\iint_{S_a} \vec{P}.\vec{dS})$
+\end{tcolorbox}\end{center}
+
+Cette formule ``fonctionne'' aussi pour des surfaces ouvertes. Elle permet, par exemple, de calculer la puissance injectée dans
+un four à micro-ondes, en calculant cette intégrale surfacique, sur la surface de ``sortie'' du guide d'onde alimentant le four.
+
+\vspace{0.5cm}
+La même formule peut être utilisée en optique pour calculer, par exemple, la puissance transmise par un ``faisceau'' lumineux.
+
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\section{Ondes planes}
+\begin{frame} 
+\frametitle{Ondes planes}
+
+En l'absence de source (ou a une distance très grande des sources), les équations de Maxwell permettent de déduire l'équation de
+propagation du champ électromagnétique:
+
+\begin{center}
+$\Delta \vec{E}-\epsilon.\mu\dfrac{\partial^2\vec{E}}{\partial t^2}=\vec{0}$ \hspace{1cm} et \hspace{1cm} $\Delta \vec{H}-\epsilon.\mu\dfrac{\partial^2\vec{H}}{\partial t^2}=\vec{0}$
+\end{center}
+
+Ces solutions particulières sont les \textbf{ondes planes} et peuvent être exprimées par:
+
+\begin{center} \begin{tcolorbox}[colframe=red,width=7cm]
+\center$\vec{E}(\vec{r})=\vec{E}(0)e^{-jk\vec{u}.\vec{r}}$
+
+\vspace{0.5cm}
+ $\vec{H}(\vec{r})=\vec{H}(0)e^{-jk\vec{u}.\vec{r}}$
+\end{tcolorbox}\end{center}
+
+$\vec{u}$ est un vecteur unitaire \hspace{1cm}$||\vec{u}||=1$
+
+La constante $\vec{k}=k\vec{u}$ est appelée vecteur d'onde de l'onde plane.
+
+Si $\vec{A}$ est une onde plane, on montre que:
+
+\begin{center}
+$div(\vec{A})=-j \vec{k}.\vec{A}$
+
+$\vec{rot}(\vec{A})=-j \vec{k}\wedge\vec{A}$
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Ondes planes: résultats remarquables}
+
+$\vec{k}, \vec{E}$ et $\vec{H}$ forment une trièdre direct, avec:
+
+\begin{minipage}[t]{0.45\textwidth}
+\center\begin{tcolorbox}[colframe=red,width=4cm]
+\center$\vec{H}=\dfrac{1}{\eta}(\vec{u}\wedge\vec{E})$
+
+$\vec{E}=-\eta(\vec{u}\wedge\vec{H})$
+\end{tcolorbox}
+\end{minipage}
+\hfill % Espacement entre les colonnes
+\begin{minipage}[t]{0.45\textwidth}
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$\dfrac{||\vec{E}||}{||\vec{H}||}=\eta$
+\end{tcolorbox}
+\end{minipage}
+
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{-0.9cm}La longueur d'onde $\lambda$ est donnée par:
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$k=\dfrac{2\pi}{\lambda}=\dfrac{\omega}{v}$
+\end{tcolorbox}
+\end{minipage}
+
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{-0.9cm}L'impédance d'onde $\eta$ est donnée par:
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$\eta=\sqrt{\dfrac{\mu}{\epsilon}}$
+\end{tcolorbox}
+\end{minipage}
+
+Dans le vide: $\eta=\sqrt{\dfrac{\mu_0}{\epsilon_0}}=377\ \Omega$ et $v=c=\dfrac{1}{\sqrt{\epsilon_0 . \mu_0}}=3.10^8\ m/s$.
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Ondes planes: résultats remarquables}
+
+La direction de propagation de l'onde plane est $\vec{u}$.
+
+\vspace{0.5cm}
+Les plans perpendiculaires à $\vec{u}$ sont des plans équiphase.
+
+\vspace{0.5cm}
+\begin{minipage}[t]{0.45\textwidth}
+\vspace{-0.9cm}Le vecteur de Poynting est donné par:
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\begin{tcolorbox}[colframe=red,width=4cm]
+$\vec{P}=\dfrac{||\vec{E}||^2}{2\eta}\vec{u}$
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{0.5cm}
+Une onde plane est \textbf{polarisée}: la direction de $\vec{E}$ est partout la même, et celle-ci est perpendiculaire à $\vec{u}$.
+
+\vspace{0.5cm}
+Le \textbf{plan de polarisation} en un point est défini par le plan $(\vec{u};\vec{E})$.
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Relation vecteur u $<->$ direction d'observation}
+
+\begin{minipage}[t]{0.55\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/demi_sphere.png}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.35\textwidth}
+
+\vspace{1.5cm}
+$u_x=\sin(\theta)\cos(\varphi)$
+
+\vspace{0.5cm}
+$u_y=\sin(\theta)\sin(\varphi)$
+
+\vspace{0.5cm}
+$u_z=\cos(\theta)$
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Coordonnées cylindriques et sphériques}
+\begin{frame} 
+\frametitle{Coordonnées sphériques}
+
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/coord_spherique.png}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+
+$\vec{u}=\vec{e_r}$
+
+\vspace{0.5cm}
+$\vec{e_x}=\sin(\theta)\cos(\varphi)\vec{e_r}+\cos(\theta)\cos(\varphi)\vec{e_\theta}-\sin(\varphi)\vec{e_\varphi}$
+
+\vspace{0.25cm}
+$\vec{e_y}=\sin(\theta)\sin(\varphi)\vec{e_r}+\cos(\theta)\sin(\varphi)\vec{e_\theta}+\cos(\varphi)\vec{e_\varphi}$
+
+\vspace{0.25cm}
+$\vec{e_z}=\cos(\theta)\vec{e_r}-\sin(\theta)\vec{e_\theta}$
+
+\vspace{0.5cm}
+$\vec{e_r}=\sin(\theta)\cos(\varphi)\vec{e_x}+\sin(\theta)\sin(\varphi)\vec{e_y}+\cos(\theta)\vec{e_z}$
+
+\vspace{0.25cm}
+$\vec{e_\theta}=\cos(\theta)\cos(\varphi)\vec{e_x}+\cos(\theta)\sin(\varphi)\vec{e_y}-\sin(\theta)\vec{e_z}$
+
+\vspace{0.25cm}
+$\vec{e_\varphi}=-\sin(\varphi)\vec{e_x}+\cos(\varphi)\vec{e_y}$
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Coordonnées sphériques}
+
+\center\begin{minipage}[t]{0.35\textwidth}
+$\vec{grad}(U)=\begin{pmatrix}
+\dfrac{\partial U}{\partial r} \vspace{0.25cm}\\
+\dfrac{1}{r}\dfrac{\partial U}{\partial \theta} \vspace{0.25cm}\\
+\dfrac{1}{r \sin\theta}\dfrac{\partial U}{\partial \varphi}
+\end{pmatrix}$
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+
+$\vec{rot}(\vec{A})=\begin{pmatrix}
+\dfrac{1}{r \sin\theta}\dfrac{\partial}{\partial \theta}(\sin\theta A_\varphi)-\dfrac{1}{r \sin\theta}\dfrac{\partial A_\theta}{\partial\varphi} \vspace{0.25cm}\\
+\dfrac{1}{r \sin\theta}\dfrac{\partial A_r}{\partial \varphi}-\dfrac{1}{r}\dfrac{\partial}{\partial r} (r A_\varphi)\vspace{0.25cm}\\
+\dfrac{1}{r}\dfrac{\partial}{\partial r}(r A_\theta)-\dfrac{1}{r}\dfrac{\partial A_r}{\partial \theta}
+\end{pmatrix}$
+
+\end{minipage}
+
+\vspace{0.5cm}
+\[div(\vec{A})=\dfrac{1}{r^2}\dfrac{\partial}{\partial r}(r^2 A_r)+\dfrac{1}{r \sin\theta}\dfrac{\partial}{\partial \theta}(A_\theta \sin\theta)+\dfrac{1}{r\sin\theta}\dfrac{\partial A_\varphi}{\partial \varphi}\]
+
+\vspace{0.5cm}
+\[\Delta U=\dfrac{1}{r^2}\dfrac{\partial}{\partial r}(r^2 \dfrac{\partial U}{\partial r})+\dfrac{1}{r^2 \sin\theta}\dfrac{\partial}{\partial \theta}(\sin\theta\dfrac{\partial U}{\partial \theta})+\dfrac{1}{r^2 \sin^2\theta}\dfrac{\partial^2 U}{\partial \varphi^2}\]
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Coordonnées cylindriques}
+
+\center\begin{minipage}[t]{0.35\textwidth}
+$\vec{grad}(U)=\begin{pmatrix}
+\dfrac{\partial U}{\partial r} \vspace{0.25cm}\\
+\dfrac{1}{r}\dfrac{\partial U}{\partial \theta} \vspace{0.25cm}\\
+\dfrac{\partial U}{\partial z}
+\end{pmatrix}$
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+
+$\vec{rot}(\vec{A})=\begin{pmatrix}
+\dfrac{1}{r}\dfrac{\partial A_z}{\partial \theta}-\dfrac{\partial A_\theta}{\partial z} \vspace{0.25cm}\\
+\dfrac{\partial A_r}{\partial z}-\dfrac{\partial A_z}{\partial r}\vspace{0.25cm}\\
+\dfrac{1}{r}\dfrac{\partial}{\partial r}(r A_\theta)-\dfrac{1}{r}\dfrac{\partial A_r}{\partial \theta}
+\end{pmatrix}$
+
+\end{minipage}
+
+\vspace{0.5cm}
+\[div(\vec{A})=\dfrac{1}{r}\dfrac{\partial}{\partial r}(r A_r)+\dfrac{1}{r}\dfrac{\partial A_\theta}{\partial \theta}+\dfrac{\partial A_z}{\partial z}\]
+
+\vspace{0.5cm}
+\[\Delta U=\dfrac{1}{r}\dfrac{\partial}{\partial r}(r \dfrac{\partial U}{\partial r})+\dfrac{1}{r^2}\dfrac{\partial^2 U}{\partial \theta^2}+\dfrac{\partial^2 U}{\partial z^2}\]
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Approximation en champ lointain}
+\begin{frame} 
+\frametitle{Approximation en champ lointain}
+
+A l'infini, on peut montrer que les champs électriques et magnétiques sont reliés, localement, par:
+
+\vspace{-0.5cm}
+\[\vec{H}=\dfrac{1}{\eta}\vec{u}\wedge\vec{E}\]
+
+On utilise le terme d'onde \textit{localement} plane, car même si cette relation est valable en chaque point, elle n'implique pas que la direction des champs soit la même partout.
+
+\vspace{0.5cm}
+\begin{minipage}[t]{0.65\textwidth}
+En fait, les champs E et H sont tangents à une sphère centrée sur l'origine:
+
+\vspace{0.5cm}
+À direction constante, lorsque $r$ varie, l'amplitude des champs varie en $\dfrac{1}{r}$ et la phase comme celle de $e^{-jkr}$.
+
+\end{minipage}
+\begin{minipage}[t]{0.3\textwidth}
+\vspace{-0.5cm}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/sphere_champ_lointain.png}
+\end{figure}
+\end{minipage}
+
+\vspace{-0.5cm}
+L'approximation de champ lointaint est valable pour une distance 
+
+\begin{minipage}[t]{0.2\textwidth}
+\begin{tcolorbox}[colframe=red,width=2.5cm]
+$r>\dfrac{2D^2}{\lambda}$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}[t]{0.75\textwidth}
+\vspace{-1cm}
+, où $D$ est la plus grande dimension de l'antenne.
+\end{minipage}
+\end{frame}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Annexes %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Ouverture plane}
+
+Les sources sont du côté $ z < 0$, le demi-espace $ z > 0$ est vide.
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/ouverture_plane_schema.png}
+\end{figure}
+
+\begin{enumerate}
+\item On calcule le Spectre d'Ondes Planes à l'aide de:
+
+\begin{tcolorbox}[colframe=red,width=10cm]
+$\vec{A}(u_x,u_y)=\dfrac{1}{\lambda^2} \displaystyle\iint_{R^2} \vec{E}(x',y',0)e^{+j\ k(x'u_x+y'u_y)}dx'\ dy' $
+\end{tcolorbox}
+
+\end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Ouverture plane}
+
+Il s'agit d'une transformée de Fourier à 2D\@:
+
+\begin{center}
+$\vec{A}(u_x,u_y)=\dfrac{1}{\lambda^2} \displaystyle\iint_{R^2} \vec{E}(x',y',0)e^{+j k(x'u_x+y'u_y)}dx' dy' $
+\end{center}
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/ouverture_plane_TF.png}
+\end{figure}
+
+\begin{minipage}[t]{0.45\textwidth}
+Analogie avec la T.F. des physiciens
+
+\vspace{0.25cm}
+T.F. de Matematica
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+$F(x)=\displaystyle\int f(x)e^{j k_x x}dx$
+
+$f(x)=\dfrac{1}{2\pi}\displaystyle\int F(k_x)e^{-j k_x x}dk_x$
+\end{minipage}
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Ouverture plane}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item On peut calculer tout champ du côté $z \geq  0$ à l'aide de:
+
+\vspace{0.25cm}
+\begin{center}
+$\vec{E}(\vec{r})= \displaystyle\iint_{R^2} \vec{A}(u_x,u_y) e^{-j k(\vec{r}.\vec{u})}du_x du_y $
+
+\vspace{0.25cm}
+$\vec{H}(\vec{r})=\dfrac{1}{\eta} \displaystyle\iint_{R^2} \vec{u}\wedge\vec{A}(u_x,u_y) e^{-j k(\vec{r}.\vec{u})}du_x du_y $
+\end{center}
+
+\end{enumerate}
+
+\vspace{0.25cm}
+Remarques:
+\begin{itemize}
+\item L'expression ci-dessus est aussi valable pour un point $\vec{r}$ du plan $z = 0$. C'est la TF inverse de l'équation de la page précédente.
+
+\item $\vec{A}(u_x,u_y)e^{-jk\vec{r}.\vec{u}}$ est l'expression d'une onde plane. Le champ en tout point ``en avant'' est donc exprimé comme la somme d'une infinité d'ondes planes.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Approximation en champ lointain}
+\begin{frame} 
+\frametitle{Approximation en champ lointain}
+
+Lorsque r tend vers l'infini dans la direction $\vec{u}_0$:
+
+$\vec{r}_0=r \vec{u}_0=r\begin{pmatrix}
+u_{x0}\\u_{y0}\\u_{z0}
+\end{pmatrix}$, avec: $r \rightarrow \infty$
+
+$\vec{E}(\vec{r}_0)=\displaystyle\iint_{R^2}\vec{A}(u_x,u_y)e^{-jkr(u_{x0}u_x+u_{y0}u_y+u_{z0}uz)}du_x du_y$
+
+\vspace{0.25cm}
+On montre que la limite est donnée par (\textbf{\underline{Principe de Huygens-Fresnel}}):
+
+\begin{minipage}[t]{0.6\textwidth}
+\begin{tcolorbox}[colframe=red,width=7.5cm]
+$\vec{E}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{r}\lambda u_{z0}\vec{A}(u_{x0},u_{y0})$
+%$\vec{E}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{r}\lambda \vec{A}(u_{x0},u_{y0})$
+
+$\vec{H}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} \dfrac{1}{\eta} j \dfrac{e^{-jkr}}{r}\lambda u_{z0}\vec{u}_0\wedge\vec{A}(u_{x0},u_{y0})$
+%$\vec{H}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} \dfrac{1}{\eta} j \dfrac{e^{-jkr}}{r}\lambda \vec{u}_0\wedge\vec{A}(u_{x0},u_{y0})$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\vspace{-1cm}
+Avec: $\vec{E}(\vec{r}_0) \perp \vec{H}(\vec{r}_0) \perp \vec{u}_0$
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Approximation en champ lointain}
+
+\begin{minipage}[t]{0.6\textwidth}
+\begin{tcolorbox}[colframe=red,width=7.5cm]
+$\vec{E}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{r}\lambda u_{z0}\vec{A}(u_{x0},u_{y0})$
+%$\vec{E}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{r}\lambda \vec{A}(u_{x0},u_{y0})$
+
+$\vec{H}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} \dfrac{1}{\eta} j \dfrac{e^{-jkr}}{r}\lambda u_{z0}\vec{u}_0\wedge\vec{A}(u_{x0},u_{y0})$
+%$\vec{H}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} \dfrac{1}{\eta} j \dfrac{e^{-jkr}}{r}\lambda \vec{u}_0\wedge\vec{A}(u_{x0},u_{y0})$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\vspace{-1cm}
+Avec: $\vec{E}(\vec{r}_0) \perp \vec{H}(\vec{r}_0) \perp \vec{u}_0$
+\end{minipage}
+
+\vspace{0.5cm}
+En un point du champ lointain, le champ rayonné par une source quelconque a donc beaucoup de ressemblance avec une onde
+plane.
+
+\vspace{0.5cm}
+$\vec{u}_0$ est la direction reliant l'antenne source avec le point d'observation.
+
+\vspace{0.5cm}
+\textbf{$\vec{u}_0$ est aussi la direction de propagation de cette onde localement plane.}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Approximation en champ lointain}
+
+\begin{minipage}[t]{0.6\textwidth}
+\begin{tcolorbox}[colframe=red,width=7.5cm]
+$\vec{E}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{r}\lambda u_{z0}\vec{A}(u_{x0},u_{y0})$
+%$\vec{E}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{r}\lambda \vec{A}(u_{x0},u_{y0})$
+
+$\vec{H}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} \dfrac{1}{\eta} j \dfrac{e^{-jkr}}{r}\lambda u_{z0}\vec{u}_0\wedge\vec{A}(u_{x0},u_{y0})$
+%$\vec{H}(\vec{r}_0) \underset{r \rightarrow \infty}{\approx} \dfrac{1}{\eta} j \dfrac{e^{-jkr}}{r}\lambda \vec{u}_0\wedge\vec{A}(u_{x0},u_{y0})$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}[t]{0.35\textwidth}
+\vspace{-1cm}
+Avec: $\vec{E}(\vec{r}_0) \perp \vec{H}(\vec{r}_0) \perp \vec{u}_0$
+\end{minipage}
+
+\vspace{0.5cm}
+Les variations du spectre d'onde plane $\vec{A}(u_{x0},u_{y0})$, selon les différentes directions de l'espace, sont pratiquement identiques à celles de $\vec{E}(r.\vec{u}_0)$ selon ces mêmes directions.
+
+\vspace{0.5cm}
+À direction constante, lorsque $r$ varie, l'amplitude des champs varie en $\dfrac{1}{r}$ et la phase comme celle de $e^{-jkr}$.
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Approximation en champ lointain}
+
+Il résulte que, à l'infini, les champs électriques et magnétiques sont reliés, localement, par:
+
+\[\vec{H}=\dfrac{1}{\eta}\vec{u}\wedge\vec{E}\]
+
+On utilise le terme \textit{localement} plane, car même si cette relation est valable en chaque point, elle n'implique pas que la direction des champs soit la même partout.
+
+\vspace{0.5cm}
+En fait, les champs E et H sont tangents à une sphère centrée sur l'origine:
+
+\begin{figure}
+\includegraphics[width=0.2\textwidth]{figures/sphere_champ_lointain.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+% \begin{frame}
+% \frametitle{Domaine visible}
+
+% Les formules théoriques ci-dessus sont valables pour toute valeur de $u_{x0}$ et $u_{y0}$ telles que: $u_{x0}^2+u_{y0}^2 \leq 1$
+
+% \begin{figure}
+% \includegraphics[width=0.7\textwidth]{figures/Domaine_visible.png}
+% \end{figure}
+
+% Mais elles sont aussi valables pour:  $u_{x0}^2+u_{y0}^2 > 1$ ! !
+
+% \end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Découplage entre composantes: Polarisation}
+
+\vspace{-0.25cm}
+\[\vec{E}(r\vec{u}) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} u_{z}\displaystyle\iint_{R^2}   \vec{E}(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy'\]
+%\[\vec{E}(r\vec{u}) \underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} \displaystyle\iint_{R^2}   \vec{E}(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy'\]
+
+\vspace{0.5cm}
+Donc: 
+\[E_x(r\vec{u})\underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} u_{z}\displaystyle\iint_{R^2}   E_x(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy\]
+\[E_y(r\vec{u})\underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} u_{z}\displaystyle\iint_{R^2}   E_y(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy\]
+\[E_{xy}(r\vec{u})\underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} u_{z}\displaystyle\iint_{R^2}   E_{xy}(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy\]
+%\[E_x(r\vec{u})\underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} \displaystyle\iint_{R^2}   E_x(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy\]
+%\[E_y(r\vec{u})\underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} \displaystyle\iint_{R^2}   E_y(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy\]
+%\[E_{z}(r\vec{u})\underset{r \rightarrow \infty}{\approx} j \dfrac{e^{-jkr}}{\lambda\ r} \displaystyle\iint_{R^2}   E_{z}(x',y',0)\ e^{+jk(x'u_x+y'u_y)} dx' dy\]
+
+Or, en champ lointain: $\vec{E}.\vec{u}=E_x u_x+E_y u_y+E_z u_z=0$
+
+On a donc pour une ouverture polarisée parallèlement à Oy:
+
+\[||\vec{E}(\vec{r})||^2=\dfrac{1}{{(\lambda\ r)}^2}(1-u_x^2) \left|\left|\displaystyle \iint_{R^2} E_y(x',y',0)\ e^{+jk(u_x x'+u_y y')}dx' dy'\right|\right|^2\]
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Exemples: Ouverture circulaire et rectangulaire}
+\begin{frame} 
+\frametitle{Ouverture circulaire $\Phi = 5 \lambda$}
+
+\begin{center}
+Diagramme de rayonnement en amplitude pour une ouverture polarisée selon $y$
+\end{center}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/diag_ouverture_circ_5l.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Ouverture circulaire $\Phi = 5 \lambda$}
+\begin{center}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/champ_ouverture_circ_5l.png}
+\caption{Champ sur l'ouverture}
+\end{figure}
+\end{minipage}\hspace{1cm}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/champ_ray_ouverture_circ_5l.png}
+\caption{Champ rayonné}
+\end{figure}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Ouverture rectangulaire}
+
+\begin{center}
+Diagramme de rayonnement en amplitude pour une ouverture polarisée selon Y
+\end{center}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/diag_ouverture_rec.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Ouverture rectangulaire}
+
+\begin{center}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/champ_ouverture_rec.png}
+\caption{Champ sur l'ouverture}
+\end{figure}
+\end{minipage}\hspace{1cm}
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/champ_ray_ouverture_rec.png}
+\caption{Champ rayonné}
+\end{figure}
+\end{minipage}
+\end{center}
+
+\end{frame}
+
+

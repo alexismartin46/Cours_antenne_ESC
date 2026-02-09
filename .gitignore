@@ -1,0 +1,10 @@
+# Ignorer tous les fichiers .log
+*.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc

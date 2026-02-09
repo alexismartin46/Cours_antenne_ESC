@@ -1,0 +1,324 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[]{amsmath,amsfonts,theorem,amssymb,stmaryrd}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}% Pour saisir directement les caracteres accentues codage utf-8
+\usepackage{lastpage} % Pour pouvoir insérer le numéro de la dernière page
+\usepackage{psfrag}   %pour pouvoir modifier du texte sur les figures
+\usepackage{hyperref}   % pour creer des liens que peut suivre Acrobat reader
+\usepackage{alterqcm} %pour les qcm
+\setlength{\unitlength}{1mm} %l'unité par défaut est le mm
+\usepackage[final]{pdfpages} 
+\usepackage{enumitem}
+\usepackage{multicol}% multicolonnes
+\usepackage{hyperref}
+
+%--------------------------------------Pour les figures-----------------------------%
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subfigure} % pour les sous-figures
+\DeclareGraphicsExtensions{.eps} % tous les fichiers graphiques sont
+                                 % par defaut des fichiers .eps
+%-----------------------------------------------------------------------------------%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MISE EN PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\headheight=70pt   % hauteur de l'entete
+\textwidth=17cm    % largeur du texte hors note en marge
+\oddsidemargin=-20pt % marge gauche réduite à 1 pouce
+\textheight=24.5cm   % longueur utile de la page
+\topmargin=-60pt   % marge haute négative (0pt correspond à une marge de 1 pouce)
+\marginparwidth=0pt%
+\marginparsep=0pt  %
+\headsep=20pt      % séparation 20 points entre entête et texte
+\footskip=30pt % iden séparation pied de page
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------Définition des entetes et pieds de pages--------------------%
+\usepackage{fancyhdr} % pour agir sur les entetes et pieds de pages
+\lhead{\includegraphics*[width=1.5cm]{fig/logoEnseaCoul}}
+\chead{\large\textsl{Contrôle de synthèse \the\year\\ Antennes}}
+\rhead{Nom:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \\ Prénom :\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\lfoot{\small\textsl{A. Martin}}
+\cfoot{\small\textsl{Décembre \the\year}}
+\rfoot{\normalsize\textsl{\thepage /\pageref{LastPage}}}
+\renewcommand{\footrulewidth}{0.4pt} % pour l'epaisseur du trait en bas de page
+\pagestyle{fancy}
+%----------------------------------------------------------------------------------%
+
+\begin{document}
+\vspace{30pt}
+
+%\vspace{10pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%    SUJET 2025    %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{2h. Documents et calculatrice autorisés.}
+
+\section{Questions de cours}
+
+\underline{\textit{Toutes les questions de cette partie sont indépendantes.}}
+
+\begin{enumerate}
+	\item Voici l'impédance d'entrée d'une antenne patch ($|S_{11}|$ à gauche et abacque de Smith à droite).  
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{fig/QCM_S11_dB.png}
+		\includegraphics[width=0.3\textwidth]{fig/QCM_S11_smith.png}
+	\end{center}
+	La fréquence de résonnance de cette antenne est:
+	\begin{itemize}
+		\item[$\square$] 2.459 GHz
+		\item[$\square$] 2.483 GHz
+	\end{itemize}
+
+	\item Le résultat de la simulation d'une antenne patch est présenté ci-dessous (courbe du gain dans le plan E en dBi).
+	
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{fig/QCM_farfield.png}
+	\end{center}
+
+	L'ouverture à mi-puissance vaut:
+	\begin{itemize}
+		\item[$\square$] 0$^{\circ}$
+		\item[$\square$] 38$^{\circ}$
+		\item[$\square$] 76$^{\circ}$
+		\item[$\square$] 84$^{\circ}$
+		\item[$\square$] 152$^{\circ}$
+	\end{itemize}
+
+	\newpage
+	\item On considère l'antenne patch ci-dessous. Le plan E est le plan:
+	
+	\begin{minipage}{0.3\textwidth}
+		\begin{itemize}
+			\item [$\square$] (xOz)
+			\item [$\square$] (yOz)
+			\item [$\square$] (xOy)
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth}
+		\includegraphics[width=\textwidth]{fig/patch.png}
+	\end{minipage}
+
+	\item Pour l'antenne patch précédente, le plan H est le plan:
+	
+	\begin{minipage}{0.3\textwidth}
+		\begin{itemize}
+			\item [$\square$] $\varphi=0^\circ$
+			\item [$\square$] $\varphi=90^\circ$
+			\item [$\square$] $\theta=0^\circ$
+			\item [$\square$] $\theta=90^\circ$
+		\end{itemize}
+	\end{minipage}
+	
+	
+	
+	\item On considère une antenne isotrope rayonnant une puissance de 0dBm à 2.4GHz. La puissance reçue par une antenne de réception de gain 6 dBi située à 10 m de distance dans l'axe de l'antenne est (on suppose les antennes parfaitement adaptées et avec la même polarisation):
+	
+	\begin{picture}(160,40)
+		\framebox(160,40){}
+	\end{picture}
+
+	\item Quel est l'avantage d'utiliser une antenne à polarisation circulaire à l'émission et une antenne à polarisation linéaire à la réception (par rapport à 2 antennes à polarisation linéaire)?
+	
+	\begin{picture}(160,40)
+		\framebox(160,40){}
+	\end{picture}
+
+	\item On souhaite réaliser une antenne monopôle fonctionnant à 868 MHz (application LoRa). Quelle doit être la hauteur physique de cette antenne?
+	
+	\begin{picture}(160,30)
+		\framebox(160,30){}
+	\end{picture}
+
+	\newpage
+	\item Quel est l'avantage d'une antenne cornet par rapport à un réseau d'antennes imprimées?
+	\begin{itemize}
+		\item [$\square$] Le cornet est plus compact
+		\item [$\square$] Le cornet peut transmettre plus de puissance
+		\item [$\square$] Le cornet est plus facile à intégrer dans un circuit imprimé
+		\item [$\square$] Le cornet a un gain plus élevé
+		\item [$\square$] Le cornet est plus léger
+		\item [$\square$] Le cornet est moins cher
+	\end{itemize}
+
+	\item La figue ci-dessous représente le champ électrique au niveau de l'ouverture d'un cornet. Le plan E correspond au plan:
+	
+	\begin{minipage}{0.3\textwidth}
+		\begin{itemize}
+			\item [$\square$] (xOz)
+			\item [$\square$] (yOz)
+			\item [$\square$] (xOy)
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+		\includegraphics[width=\textwidth]{fig/Champ_cornet.png}
+	\end{minipage}
+	
+
+
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Exercice 1  %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Exercice : Antenne miniature}
+On se propose d'étudier l'antenne miniature 7488920245 de Würth Elektroniks, dont une partie de la documentation technique est disponible en annexe. 
+
+\begin{enumerate}
+	\item Quelle est la bande passante de cette antenne ? On utilisera le critère classique pour les antennes.
+	
+	\begin{picture}(160,20)
+		\framebox(160,20){}
+	\end{picture}
+
+	\item A partir de vos connaissances, justifier la forme du diagramme de rayonnement de l'antenne.
+	
+	\begin{picture}(160,30)
+		\framebox(160,30){}
+	\end{picture}
+
+	\item Cette antenne est à polarisation:
+	\begin{itemize}
+        \item[$\square$] linéaire
+        \item[$\square$] circulaire
+    \end{itemize}
+
+	\vspace{0.5cm}
+	On souhaite réaliser un réseau d'antennes \textit{end-fire} utilisant cette antenne miniature (voir figure ci-dessous). On souhaite donc que ce réseau rayonne dans la direction $\vec{y}$ (les antennes sont placées sur l'axe $\vec{y}$).
+	
+	\begin{center}
+		\includegraphics[width=0.3\textwidth]{fig/ceramic_antenna_reseau_base.png}
+	\end{center}
+
+	\vspace{-0.5cm}
+	\item Quelle doit être l'orientation des antennes pour que le réseau puisse rayonner dans la direction souhaitée ? (Justifier)
+	
+	\includegraphics[width=0.4\textwidth]{fig/ceramic_antenna_reseau.png}\hspace{2cm}
+    \includegraphics[width=0.4\textwidth]{fig/ceramic_antenna_reseau2.png}
+    
+	\vspace{-0.5cm}
+	\begin{center}
+		\textbf{A} \hspace{8.5cm} \textbf{B}
+	\end{center}
+
+	\begin{picture}(160,35)
+		\framebox(160,35){}
+	\end{picture}
+
+	\item Quel doit être le déphasage $\Psi$ entre chaque antenne pour que le réseau rayonne dans la direction souhaitée ? (Justifier)
+	
+	\begin{picture}(160,30)
+		\framebox(160,30){}
+	\end{picture}
+
+	\item Tracer l'allure de la caractéristique de rayonnement dans les 3 plans de coupes principaux (plans $\varphi=0^\circ$, $\varphi=90^\circ$ et $\theta=90^\circ$) du réseau formé par ces 3 antennes avec le déphasage calculé, en coordonnées polaires.
+	
+	\begin{minipage}{0.32\textwidth}
+		\includegraphics[width=\textwidth]{fig/polar.png}
+		
+		\centering Plan $\varphi=0^\circ$
+	\end{minipage}
+	\begin{minipage}{0.32\textwidth}
+		\includegraphics[width=\textwidth]{fig/polar.png}
+		
+		\centering Plan $\varphi=90^\circ$
+	\end{minipage}
+	\begin{minipage}{0.32\textwidth}
+		\includegraphics[width=\textwidth]{fig/polar.png}
+		
+		\centering Plan $\theta=90^\circ$
+	\end{minipage}
+
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Exercice 2  %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Exercice: Réseau d'antennes patchs}
+
+On souhaite réaliser une liaison point à point à 24 GHz (uplink). On utilise pour cela un réseau d'antennes patchs imprimées. On donne la caractéristique de rayonnement dans les plans E et H.
+
+\begin{center}
+\begin{minipage}{0.7\textwidth}
+	\includegraphics[width=\textwidth]{fig/array_factor_N6_08lambda_E.png}
+	
+	\centering Caractéristique de rayonnement dans le plan E
+\end{minipage}
+
+\begin{minipage}{0.7\textwidth}
+	\includegraphics[width=\textwidth]{fig/array_factor_N8_07lambda_H.png}
+	
+	\centering Caractéristique de rayonnement dans le plan H
+\end{minipage}		
+\end{center}
+
+\begin{enumerate}
+	\item Quel est le niveau de lobe secondaire dans le plan E par rapport au lobe principal? (en dB)
+	
+	\begin{picture}(160,20)
+		\framebox(160,20){}
+	\end{picture}
+
+	\item Sachant qu'il y a 6 antennes dans le plan E, quelle est la distance entre chaque antenne dans cette direction?
+
+	\begin{picture}(160,40)
+		\framebox(160,40){}
+	\end{picture}
+
+	\item Sachant que la distance entre antennes dans le plan H est de 8.7mm, combien y a-t-il d'antennes dans cette direction? 
+
+	\begin{picture}(160,40)
+		\framebox(160,40){}
+	\end{picture}
+
+	\item Quelle est la directivité de l'antenne? (en dBi)
+
+	\begin{picture}(160,40)
+		\framebox(160,40){}
+	\end{picture}
+
+	\item Sachant que l'efficacité de l'antennne est de 80\%, quel est le gain de l'antenne? (en dBi)
+
+	\begin{picture}(160,30)
+		\framebox(160,30){}
+	\end{picture}
+
+	\item La surface de l'antenne est de 70mm x 79mm. Quelle est la valeur du coefficient d'ouverture de l'antenne?
+	
+	\begin{picture}(160,30)
+		\framebox(160,30){}
+	\end{picture}
+
+	\item On souhaite réaliser une liaison point à point entre deux antennes identiques situées à 200 m l'une de l'autre. La puissance émise par l'antenne d'émission est de 10 dBm. Quelle est la puissance reçue par l'antenne de réception? (en dBm)
+	
+	On suppose que les antennes sont parfaitement adaptées, avec la même polarisation, et que l'environnement de propagation est libre (\textit{Line of Sight}).
+
+	\begin{picture}(160,30)
+		\framebox(160,30){}
+	\end{picture}
+
+\end{enumerate}
+
+
+\newpage
+\subsection*{Annexe: Documentation technique de l'antenne miniature 7488920245}
+\includegraphics[width=0.89\textwidth]{fig/ceramic_antenna_s11.png}
+
+\includegraphics[width=0.89\textwidth]{fig/ceramic_antenna_diagram.png}
+
+\includegraphics[width=0.89\textwidth]{fig/ceramic_antenna_diagram2.png}
+
+%\subsection*{Annexe: Documentation technique de l'antenne patch PA2400-A}
+
+
+\end{document}

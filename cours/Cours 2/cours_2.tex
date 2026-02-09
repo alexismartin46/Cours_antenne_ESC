@@ -1,0 +1,786 @@
+\documentclass[
+10pt,
+aspectratio=169,
+]{beamer}
+
+
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tcolorbox}
+\usepackage{beamerthemeensea}
+
+
+\title{Antennes – ESC}
+\subtitle{Cours 2: Propriétés générales des antennes}
+\date{\the\year}
+\author{Alexis MARTIN}
+%\institute{ENSEA}
+
+\usetheme{ensea}  
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%
+
+\section{Exemples de technologies}
+\begin{frame} 
+\frametitle{Exemples de technologies}
+\framesubtitle{Antennes filaires}
+\vspace{-0.3cm}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/Ex_antennes_fil.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Exemples de technologies}
+\framesubtitle{Antennes à ouvertures: guides}
+
+\begin{figure}
+\includegraphics[width=0.85\textwidth]{figures/Ex_antennes_ouv.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Exemples de technologies}
+\framesubtitle{Antennes à ouvertures: cornet}
+
+\begin{figure}
+\includegraphics[width=0.65\textwidth]{figures/Ex_antennes_ouv2.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Exemples de technologies}
+\framesubtitle{Antennes à ouvertures: réflecteur (paraboles)}
+
+\begin{figure}
+\includegraphics[width=0.75\textwidth]{figures/Ex_antennes_ouv3.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Exemples de technologies}
+\framesubtitle{Antennes Patch}
+
+\begin{figure}
+\includegraphics[width=0.85\textwidth]{figures/Ex_antennes_patch.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+
+\begin{frame} 
+\frametitle{Exemples de technologies}
+\framesubtitle{Réseau d'antennes}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/Ex_antennes_array.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Angle solide}
+\begin{frame} 
+\frametitle{Angle solide}
+
+L'angle solide ``\textit{mesure}'' l'étendue d'un cône:
+
+\begin{minipage}{0.45\textwidth}\center\begin{tcolorbox}[colframe=red,width=4.5cm]
+\center$d\Omega=\dfrac{dA}{dr}=\sin \theta d \theta d \varphi$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}
+{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/angle_solide.png}
+\end{figure}
+\end{minipage}
+
+Pour l'espace entier: $\Omega=4\pi$ stéradians.
+
+Pour un demi espace: $\Omega=2\pi$ stéradians.
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame} 
+\frametitle{Puissance émise par stéradian}
+
+Soit un cône dont le sommet est l'antenne d'émission. La puissance émise dans ce cône peut être mesurée. Cette puissance est indépendante de la distance à l'origine.
+
+\vspace{0.5cm}
+\textit{La puissance émise est conservée à l'intérieur d'un cône ``centré'' sur l'antenne.}
+
+\vspace{0.5cm}
+Ceci est dû au fait qu'à grande distance, les champs émis varient en $1/r$.
+
+\vspace{0.5cm}
+On peut alors définir $U(\theta,\varphi)$ la puissance émise par unité d'angle solide. Unité: W/strd
+
+\center\begin{tcolorbox}[colframe=red,width=7cm]
+\center$U(\theta,\varphi)=\dfrac{dP}{d\Omega}=\dfrac{r^2 ||\vec{E}(r,\theta,\varphi)||^2}{2\eta}$
+\end{tcolorbox}
+
+\end{frame}
+
+%%%%%%%%%%%%
+\section{Caractéristique de rayonnement}
+\begin{frame}
+\frametitle{Caractéristique de rayonnement}
+
+La caractéristique de rayonnement, $r(\theta,\varphi)$ est la puissance émise par stéradian, normalisée par rapport à son niveau max:
+
+\begin{tcolorbox}[colframe=red,width=7cm]
+    \center$r(\theta,\varphi)=\dfrac{U(\theta,\varphi)}{U_{\max}}$
+\end{tcolorbox}
+
+Par conséquent:
+$r_{\max}=1$
+
+\vspace{0.5cm}
+La valeur de $r$ peut aussi être indiquée en dB\@:
+
+\begin{tcolorbox}[colframe=red,width=6cm]
+    \center$r_{dB}(\theta,\varphi)=10 \log_{10} r_{lin}$
+\end{tcolorbox}
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Représentation de $r(\theta,\varphi)$}
+Une direction, pointant du côté des $z > 0$ peut être représentée par 2 quantités:
+
+\vspace{0.5cm}
+Soit $\theta$ et $\varphi$ 
+
+Soit $u_x$ et $u_y$
+
+\vspace{0.5cm}
+$u_x=\sin(\theta)\cos(\varphi)$
+
+$u_y=\sin(\theta)\sin(\varphi)$
+
+\vspace{0.5cm}
+D'où les différentes représentations graphique possibles, qui peuvent être combinées avec une représentation de $r(\theta,\varphi)$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Représentation de $r(\theta,\varphi)$}
+En coordonnées $u_x$, $u_y$, en 3D\@:
+
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/Representation_3D.png}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%
+% \begin{frame}
+% \frametitle{Représentation de $r(\theta,\varphi)$}
+% En coordonnées $u_x$, $u_y$, en dB, et en 2D\@:
+
+% \begin{minipage}{0.45\textwidth}
+% \center\begin{figure}
+% \includegraphics[width=\textwidth]{figures/Representation_2D_lin_cart.png}
+% \end{figure}
+
+% Linéaire
+% \end{minipage}
+% \begin{minipage}{0.45\textwidth}
+% \center\begin{figure}
+% \includegraphics[width=\textwidth]{figures/Representation_2D_dB_cart.png}
+% \end{figure}
+
+% dB
+% \end{minipage}
+
+% \end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Représentation de $r(\theta,\varphi)$}
+En coordonnées $\theta$, $\varphi$:
+
+\begin{minipage}{0.45\textwidth}
+\center\begin{figure}
+\includegraphics[width=\textwidth]{figures/Representation_2D_dB_cart.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\center\begin{figure}
+\includegraphics[width=\textwidth]{figures/Representation_2D_dB_polaire.png}
+\end{figure}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\section{Angle d'ouverture}
+\begin{frame}
+
+\frametitle{Angle d'ouverture à mi-puissance}
+
+La mi-puissance correspond à $r_{lin} = 0.5$, ou encore $r_{dB} = -3$
+
+\vspace{0.5cm}
+Cet angle est aussi appelé ``angle d'ouverture à -3dB''
+
+\vspace{0.5cm}
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{figures/angle_ouverture.png}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Angle solide d'ouverture}
+Cette notion est moins utilisée, mais peut être très ``parlante'':
+
+\[\Omega_{ouv}=\int\int_{espace}r(\theta,\varphi) d\Omega=\int_{\varphi=0}^{2\pi}\int_{\theta=0}^\pi r(\theta,\varphi)\sin(\theta)d\theta d\varphi\]
+
+\vspace{1cm}
+Pour une antenne ``omni-directionnelle'', appelée aussi ``source isotrope'':
+
+\[\Omega_{ouv}=4\pi\]
+
+\end{frame}
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Angle solide d'ouverture}
+
+Pour une antenne avec un seul lobe principal et un faible niveau de lobes secondaires, 
+assimilée à une ouverture à éclairement gaussien, en notant $\theta_H$ et 
+$\theta_E$, les angles d'ouverture dans 2 plans perpendiculaires entre eux:
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$\Omega\approx\dfrac{\pi}{\ln 2}\sin\dfrac{\theta_H}{2}\sin\dfrac{\theta_E}{2}$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+Cette approximation est à privilégier pour une antenne \textbf{à faible
+niveau de lobes secondaires}
+
+\vspace{0.5cm}
+Si $\theta_H$ et $\theta_E$ sont très petits, on a une approximation encore plus simple:
+
+\begin{tcolorbox}[colframe=red,width=9cm]
+    \center$\Omega\approx\dfrac{\pi}{\ln 2}\sin\dfrac{\theta_H}{2}\sin\dfrac{\theta_E}{2}\approx\dfrac{\pi}{4\ln 2}\theta_H\theta_E\approx\theta_H^{rad}\theta_E^{rad}$
+    \end{tcolorbox}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\section{Directivité, efficacité et gain}
+\begin{frame}
+\frametitle{Directivité}
+
+La directivité ``mesure'' le caractère ``pointu'' du diagramme de rayonnement.
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colframe=red,width=8cm]
+\center$D=\dfrac{U_{\max}}{U_{moyen}}=\dfrac{4\pi}{\int\int_{espace}r(\theta,\varphi)d\Omega}=\dfrac{4\pi}{\Omega_{ouv}}$
+\end{tcolorbox}
+
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colframe=red,width=2.5cm]
+\center$D\geq 1$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+Pour une antenne omni-directionnelle: D = 1
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Directivité}
+
+Pour une antenne avec un faible niveau de lobes secondaires, et en
+l'absence de ``rayonnement arrière'':
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$D\approx\dfrac{4\ln 2}{\sin\dfrac{\theta_H}{2}\sin\dfrac{\theta_E}{2}}$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+Approximation si l'antenne est assez directive:
+
+\begin{tcolorbox}[colframe=red,width=3.5cm]
+\center$D\approx\dfrac{36400}{\theta_H^\circ\theta_E^\circ}$
+\end{tcolorbox}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Directivité \& Réciprocité}
+
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$D_{dB}=10\log_{10}D_{lin}$
+\end{tcolorbox}
+
+%\vspace{0.5cm}
+Une liaison entre 2 antennes est réciproque:
+
+\begin{minipage}{0.45\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/reciproque.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\center{La propriété de \textit{réciprocité} est toujours vraie:}
+\begin{tcolorbox}[colframe=red,width=3cm]\center$\dfrac{P_2}{P_1}=\dfrac{P_2'}{P_1'}$
+\end{tcolorbox}
+\end{minipage}
+
+\end{frame}
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Efficacité d'une antenne}
+
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{figures/efficacite.png}
+\end{figure}
+
+La très grande majorité des antennes ont un rendement très proche de 1, ce qui
+revient à dire que la puissance totale rayonnée est égale à la puissance
+absorbée par l'antenne.
+
+\vspace{0.25cm}
+Seules les petites antennes (petites devant la longueur d'onde) font
+exception. Elles ont généralement un très mauvais rendement.
+
+\vspace{0.25cm}
+L'habitude est désormais de nommer cette grandeur \textit{efficacité d'une
+antenne}
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=5.5cm]
+\center$\alpha=\dfrac{P_{ray}}{P_{abs}}=\text{efficacité}$
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Gain d'une antenne}
+
+Le gain d'une antenne permet de calculer la puissance (par unité
+d'angle solide) dans la direction du maximum, à partir de la
+puissance absorbée par l'antenne.
+
+\begin{minipage}{0.45\textwidth}
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$G=\dfrac{U_{\max}}{\left(\dfrac{P_{abs}}{4\pi}\right)}$
+\end{tcolorbox}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$G_{dB}=10\log_{10}G_{lin}$
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{0.5cm}
+On trouve aussi souvent la notion de ``Gain réalisé'':
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=6cm]
+\center$G_{realized}=\dfrac{U_{\max}}{\left(\dfrac{P_{incidente}}{4\pi}\right)}$
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$G_{realized}=(1-||\Gamma||^2) \ G$
+\end{tcolorbox}
+\end{center}
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Relation Gain – Directivité}
+
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$D=\dfrac{U_{\max}}{\left(\dfrac{P_{ray}}{4\pi}\right)}$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+On a donc:
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$G=\alpha \ D$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+Le gain d'une antenne, et sa directivité ont donc généralement
+des valeurs très proches.
+
+\vspace{0.5cm}
+Ces valeurs sont identiques pour une efficacité de 100 \%.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Surface de captation}
+
+Cette notion s'applique à une antenne utilisée en réception. Cette
+valeur est équivalent à la valeur de la ``surface effective'' d'un
+capteur, en optique.
+
+\vspace{0.5cm}
+Soit $I(W / m^2)$, l'intensité de l'onde éclairant l'antenne.
+
+Soit $P_{available}$, la puissance disponible aux bornes de l'antenne.
+
+Soit $\alpha$, l'efficacité.
+
+La surface de captation $S_c$ de l'antenne est donnée par:
+\[S_c=\dfrac{P_{available}}{\alpha I}\]
+
+\vspace{0.5cm}
+On montre aussi que l'on a la relation suivante entre $S_c$ et $D$:
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=3cm]
+\center$S_c=\dfrac{\lambda^2}{4\pi}D$
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\section{Résistance de rayonnement}
+\begin{frame}
+\frametitle{Résistance de rayonnement}
+Soit $I_{RMS}$, la valeur efficace du courant à l'entrée de l'antenne. La
+résistance de rayonnement est définie par:
+
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$R_r=\dfrac{P_{ray}}{I_{RMS}^2}$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+Schéma électrique équivalent à l'entrée de l'antenne:
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/resistance_rayonnement.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Résistance de rayonnement}
+La puissance totale rayonnée $P_{ray}$ est donnée par:
+
+\begin{tcolorbox}[colframe=red,width=8cm]
+\center$P_{ray}=\int\int_{espace}U(\theta,\varphi)d\Omega=R_r.I_{RMS}^2$
+\end{tcolorbox}
+
+\vspace{0.5cm}
+$R_p$ est la résistance de pertes de l'antenne (pertes par effet Joule, ou
+pertes diélectriques)
+
+\vspace{0.5cm}
+$jX$ est la partie réactive de l'impédance de
+l'antenne, nécessairement présente, et qui sera étudiée
+ultérieurement.
+
+\vspace{0.5cm}
+L'efficacité est donnée par:
+
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$\alpha=\dfrac{R_r}{R_r+R_p}$
+\end{tcolorbox}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\section{Bilan de liaison}
+\begin{frame}
+\frametitle{Bilan de liaison}
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/bilan_liaison.png}
+\end{figure}
+
+Soit une liaison entre 2 antennes. Chaque antenne ``pointe'' vers
+l'autre dans la direction repérée par $\theta_i$, $\varphi_i$.
+
+On note $P_2$ la puissance reçue et $P_1$ la puissance émise, et l'on
+suppose que les antennes sont parfaitement adaptées. Alors:
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=8cm]
+\center$\dfrac{P_2}{P_1}=G_1.G_2.{\left(\dfrac{\lambda}{4\pi d}\right)}^2.r_1(\theta_1,\varphi_1).r_2(\theta_2,\varphi_2).\rho_p$
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bilan de liaison}
+$r_1(\theta_1, \varphi_1)$ et $r_2(\theta_2, \varphi_2)$ sont les caractéristiques de rayonnement des
+antennes (coefficient positifs inférieurs ou égaux à 1)
+
+$\rho_p$ est le facteur de polarisation. Ce coefficient est aussi un
+coefficient positif inférieur ou égal à 1.
+
+Le cas le plus favorable, que l'on choisit autant que possible, est
+celui où chaque antenne ``pointe'' vers l'autre, avec $\rho_p$ = 1
+
+\vspace{0.5cm}
+Dans ce cas:
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$\dfrac{P_2}{P_1}=G_1.G_2.{\left(\dfrac{\lambda}{4\pi d}\right)}^2$
+\end{tcolorbox}
+
+
+Cette formule est appelée ``\textit{Formule de Friis}''
+
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cas d'antennes désadaptées}
+Dans le cas où les antennes sont désadaptées, 
+la formule précédente devient de façon évidente:
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=9cm]
+\center$\dfrac{P_2}{P_1}=G_1.G_2.{\left(\dfrac{\lambda}{4\pi d}\right)}^2 {(1-||\Gamma_1||)}^2.{(1-||\Gamma_2||)}^2$
+\end{tcolorbox}
+\end{center}
+
+\vspace{0.5cm}
+Ou alors, en faisant apparaître les ``gains réalisés'':
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$\dfrac{P_2}{P_1}=G_{r1}.G_{r2}.{\left(\dfrac{\lambda}{4\pi d}\right)}^2$
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Désadaptation correspondant à un T.O.S. de 2}
+Définition du taux d'Ondes Stationnaires:
+
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$T.O.S.=\dfrac{1+||\Gamma||}{1-||\Gamma||}$
+\end{tcolorbox}
+
+On a par exemple pour $||\Gamma||=\dfrac{1}{3}$, soit $||\Gamma||_{dB}=-9.54$ dB, soit un $T.O.S. = 2$:
+
+\[{(1-||\Gamma||)}^2=-0.51\ dB\]
+
+\begin{tcolorbox}[colframe=red,width=10cm]
+    Un T.O.S. de 2 se traduit donc par une perte en transmission de 0,5 dB.
+\end{tcolorbox}
+
+\vspace{0.5cm}
+Un coefficient de réflexion inférieur à -10 dB (T.O.S. = 2) est
+souvent considéré comme suffisant pour une antenne.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Polarisation circulaire}
+
+La somme de 2 ondes polarisées perpendiculairement entre elles, de
+même amplitude, et déphasées de $\pi/2$ donne une onde à polarisation
+circulaire:
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=6cm]
+\center$\vec{E}=E_0\left(\cos(\omega t)\vec{e_x}+\sin(\omega t)\vec{e_y}\right)$
+\end{tcolorbox}
+\end{center}
+
+\vspace{0.5cm}
+La direction du champ électrique tourne en fonction du temps,
+à la fréquence de l'onde.
+
+Dans le cas précis, si la composante en phase du champ est portée
+par Ox, alors la composante en quadrature (de phase) est portée par
+Oy.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\section{Polarisation}
+\begin{frame}
+\frametitle{Polarisation circulaire}
+Si, en un point donné, la composante sur y est en retard de $\pi/2$ sur la
+composante sur x, alors le champ électrique tourne comme indiqué sur
+la figure, et l'on est en \textbf{polarisation circulaire droite}:
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/polar_circ_droit.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%
+\begin{frame}
+\frametitle{Coefficient de polarisation (polarisation linéaire)}
+
+Cas de 2 antennes à polarisation linéaire:
+
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{figures/double_polar_lin.png}
+\end{figure}
+
+$E_1$ et $E_2$ conservent la même direction, tout le long de la ligne qui
+relie les 2 antennes. Dans ce cas, si on note $\Psi$, l'angle entre les 2
+plans de polarisation des antennes:
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=4cm]
+\center$\rho_p=\cos^2(\Psi)$
+\end{tcolorbox}
+\end{center}
+
+\end{frame}
+
+%%%%%%%%%%
+\begin{frame}
+\frametitle{Coefficient de polarisation (polarisation circulaire)}
+Pour une onde à polarisation circulaire, les composantes en phase et
+en quadrature sont (géométriquement) perpendiculaires entre elles.
+
+\vspace{0.5cm}
+\begin{itemize}
+    \item Cas de 2 antennes à polarisation circulaire droite: $\rho_P = 1$
+    \item Cas de 2 antennes à polarisation circulaire gauche: $\rho_P = 1$
+    \item Une droite et une gauche: $\rho_P = 0$
+    \item Une antenne à polarisation linéaire et une
+antenne à polarisation circulaire: $\rho_P = \dfrac{1}{2}$
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\section{Bruit thermique}
+\begin{frame}
+\frametitle{Rayonnement de corps noirs}
+
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{figures/rayonnement_corps_noir.png}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bruit reçu par une antenne}
+
+Soit une antenne, totalement entourée d'une ``cible'', à la
+température $T_{cible}$:
+
+\begin{minipage}{0.6\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/antenne_bruit.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+La puissance de bruit reçue est donnée par:
+
+\begin{tcolorbox}[colframe=red,width=5cm]
+\center$P_{bruit}=k.T_{cible}.\Delta f$
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{0.5cm}
+
+(On est du côté droit de la figure précédente, où le bruit thermique
+est proportionnel à la température)
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bruit reçu par une antenne}
+
+Si l'antenne est entourée de plusieurs objets à des températures
+différentes:
+
+\begin{minipage}{0.5\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/antenne_bruit2.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+La puissance de bruit reçue est donnée par:
+\[P'_N=k.T_A.\Delta f\]
+où $T_A$ représente une ``température de bruit moyennée''.
+\end{minipage}
+
+Pour une antenne terrestre très directive pointée vers un satellite,
+$T_A$ est très faible:
+
+\[T_A\approx 10 \ K\]
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bruit reçu par une antenne}
+Avec un pré-amplificateur connecté à l'antenne:
+
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{figures/antenne_preampli.png}
+\end{figure}
+
+$F$ étant le facteur de bruit du pré-amplificateur, et $T_0$ la température
+de référence \\(en général 290 K)
+
+\vspace{0.5cm}
+Température totale de bruit ramenée à l'entrée:
+
+\begin{center}
+\begin{tcolorbox}[colframe=red,width=7cm]
+\center$T_{\text{totale ramenée}}=T_A+(F-1).T_0$
+\end{tcolorbox}
+\end{center}
+
+
+
+\end{frame}
+
+\end{document}
