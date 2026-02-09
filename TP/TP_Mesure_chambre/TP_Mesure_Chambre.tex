@@ -1,0 +1,64 @@
+\chapter{Mesure d'antennes en chambre anechoïque}
+
+On étudie des réseaux d'antennes imprimées réalisées sur un substrat de verre Téflon de caractéristiques: $\epsilon_r=2.55$, $h = 1.524 mm$.
+L'élément de base est un ``patch'' (pavé) rectangulaire:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{TP_Mesure_chambre/fig/Dimensions_patch.png}
+\end{figure}
+
+\section{Préparation}
+
+\begin{enumerate}
+    \item Estimer la valeur de la première fréquence de résonance, la ligne d'alimentation ayant une
+impédance caractéristique égale à $50 \Omega$. On pourra pour cela utiliser un simulateur, ou bien,
+plus simplement, déterminer la valeur de la constante diélectrique effective, ainsi que
+l'allongement équivalent à l'effet de bord sur les deux extrémités du résonateur de largeur $w$.
+
+On pourra déterminer $\epsilon_{eff}$ et $\Delta l$ par:
+
+\[\epsilon_{eff} = \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2} {\left( 1 + 10 \frac{h}{w} \right)}^{-\frac{1}{2}}\]
+
+\[\Delta l = 0.412 h \frac{(\epsilon_{eff} + 0.3) \left( \frac{w}{h} + 0.264 \right)}{(\epsilon_{eff} - 0.258) \left( \frac{w}{h} + 0.813 \right)}\]
+
+    \item Indiquer la position des plans E et H.
+\end{enumerate}
+
+\section{Dispositif Expérimental}
+
+La mesure du diagramme de rayonnement dans les deux plans E et H, est effectuée dans la
+chambre anéchoïque.
+
+\vspace{0.5cm}
+Le positionneur est commandé à partir d'un logiciel sous LabVIEW\@.
+
+\vspace{0.5cm}
+La réflectivité des parois est égale à $- 35 dB$ à 1 GHz, en incidence normale. Elle est encore
+inférieure à 2.5 GHz.
+
+\vspace{0.5cm}
+Quel est l'ordre de grandeur de la distance entre les deux antennes? L'antenne à mesurer est-elle
+dans le champ lointain de l'autre?
+
+\section{Manipulations}
+
+La manipulation est en cours d'évolution. On cherchera donc à obtenir le maximum de mesures
+avec les moyens disponibles.
+
+\subsection{Etude du rayonnement des réseaux disponibles}
+\begin{enumerate}
+    \item Déterminer expérimentalement la fréquence d'accord.
+    \item Relever les diagrammes de rayonnement dans les plans E et H. Relève-t-on un diagramme en tension ou en puissance?
+    \item Déterminer la largeur du lobe principal à -3 dB dans les deux plans.
+    \item Comparer les diagrammes mesurés à ce que l'on prévoit à l'aide d'une théorie simple.
+    \item Comparer avec la forme théorique des diagrammes du facteur de réseau.
+\end{enumerate}
+
+\subsection{Mesure du gain des antennes}
+
+(Une calibration est nécessaire, ne déplacer les absorbants au sol, qu'en cas de nécessité
+impérieuse)
+
+\vspace{0.5cm}
+Comparer à la valeur estimée à partir des largeurs des lobes à $-3 dB$.
