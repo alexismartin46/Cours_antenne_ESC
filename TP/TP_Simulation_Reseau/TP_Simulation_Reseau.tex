@@ -1,0 +1,84 @@
+\chapter{Simulation Electromagnétique d'un réseau d'antennes imprimées}
+
+Le but de ce TP est d'étudier par simulation le comportement d'une antenne patch seule puis
+en réseau et l'effet du déphasage des alimentations des antennes sur le diagramme de
+rayonnement. Pour cela on utilisera le logiciel ``Momentum'' disponible dans ADS\@. Ce logiciel
+permet d'effectuer des simulations électromagnétiques de structures planaires, d'obtenir les
+paramètres S, et de visualiser un diagramme de rayonnement ou des courants.
+
+\section{Préparation}
+
+Dans un premier temps, il s'agit d'étudier les caractéristiques d'une antenne patch dont les
+dimensions sont les suivantes:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{TP_Simulation_Reseau/fig/Dimensions_patch.png}
+\end{figure}
+
+Déterminer la valeur de $L_p$ pour obtenir une fréquence de
+résonance de $2.5 \text{GHz}$. Le substrat utilisé est du téflon d'épaisseur
+$h=1.524 \, \text{mm}$ et de constante diélectrique $\epsilon_r=2.55$.
+
+On pourra pour cela déterminer $\epsilon_{eff}$ et $\Delta l$ par:
+
+\[\epsilon_{eff} = \frac{\epsilon_r + 1}{2} + \frac{\epsilon_r - 1}{2} {\left( 1 + 10 \frac{h}{w} \right)}^{-\frac{1}{2}}\]
+
+\[\Delta l = 0.412 h \frac{(\epsilon_{eff} + 0.3) \left( \frac{w}{h} + 0.264 \right)}{(\epsilon_{eff} - 0.258) \left( \frac{w}{h} + 0.813 \right)}\]
+
+\section{Simulation d'une antenne imprimée seule}
+
+\begin{itemize}
+    \item Dans ADS, ouvrir une page layout et dessiner l'antenne en utilisant dans le menu insert:
+    \begin{itemize}
+        \item rectangle
+        \item coordonate entry
+    \end{itemize}
+    \item Dans la page layout ouvrir la boîte de dialogue de la simulation électromagnétique (\textit{EM-simulation setup}).
+    \begin{itemize}
+        \item Choisir le type de simulation désiré (ici \textit{Momentum microwave})
+        \item Préparer la simulation en utilisant une répartition de fréquence adaptative de $2.4 \text{GHz}$ à $2.6 \text{GHz}$.
+        \item Définir le substrat
+        \item Définition de l'excitation: Define port, (utiliser une calibration``TLM'' et définir le plan de référence au niveau de l'antenne)
+        \item La définition du maillage s'effectue dans ``options''. Prendre un maillage de bord. Calculer le maillage: \textit{generate mesh}, \textit{simulate}
+        \item Effectuer la simulation: \textit{generate S-parameter}, \textit{simulate}
+    \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+    \item Visualiser le paramètre $S_{11}$ et déterminer l'impédance et la fréquence résonance de l'antenne. Les ordres de grandeurs vous parraissent-ils cohérents?
+    \item Visualiser le diagramme de rayonnement (\textit{EM} / \textit{Post-processing} / \textit{Radiation Pattern}). Comparer avec les résultats théoriques.
+    \item Visualiser les courants (\textit{EM} / \textit{Post-processing} / \textit{Visualization}) et 
+    retrouver les phénomènes d'ondes stationnaires:
+\begin{itemize}
+    \item Sur le patch
+    \item Sur la ligne d'alimentation
+\end{itemize}
+\end{enumerate}
+
+\newpage
+\section{Simulation d'un réseau de quatre antennes}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{TP_Simulation_Reseau/fig/Dimensions_reseau.png}
+\end{figure}
+
+\begin{enumerate}
+    \item Donner l'expression du décalage angulaire de la direction d'émission en fonction du déphasage entre les antennes dans le cas d'un
+déphasage linéaire.
+\end{enumerate}
+
+\begin{itemize}
+    \item Dans une autre page layout dessiner un réseau de quatre antennes identiques à
+la précédente et superposées verticalement (utiliser la fonction \textit{Edit} / \textit{Advanced copy} / \textit{copy relative}). On définira les accès en ports directs.
+    \item Effectuer la simulation pour la fréquence de résonance déterminée précédemment
+\end{itemize}
+
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item Visualiser le diagramme de rayonnement pour des alimentations en phase et avec la même amplitude. Comparer avec les résultats théoriques.
+    \item Visualiser le diagramme de rayonnement pour un déphasage linéaire des
+alimentations ($\Phi$, 2$\Phi$, 3$\Phi$ et 4$\Phi$), en faisant varier $\Phi$. Comparer la valeur du dépointage et les positions des zéros du plan E avec les résultats théoriques.
+    \item Visualiser le diagramme de rayonnement pour des alimentations en phase et pour des amplitudes d'alimentation suivant la loi binômiale (1, 2, 2, 1). Comparer avec les résultats avec l'alimentation du réseau avec la même amplitude.
+\end{enumerate}
