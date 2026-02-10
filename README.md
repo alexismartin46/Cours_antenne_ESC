@@ -19,6 +19,7 @@
 
 - Simulation d'un réseau d'antennes Patch (ADS)
 - Mesure d'antennes imprimées en chambre anéchoïque
+- Caractérisation d'une liaison hertzienne (Banc de mesure + Simulation ADS)
 
 # Examens
 - 2025
