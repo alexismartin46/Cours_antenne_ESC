@@ -1,0 +1,184 @@
+\chapter{Caracterisation d'une liaison hertzienne}
+
+\section*{Objectif du TP et présentation du banc de mesure}
+
+Le but de ce TP est de mettre en évidence l'effet des réflexions par le sol.
+
+Le banc de mesure est constituée par une antenne émettrice alimentée par une diode Gunn et une
+antenne réceptrice connectée à un wattmètre
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{TP_Caracterisation_Liaison_Hertzienne/fig/banc_mesure.png}
+    \includegraphics[width=0.7\textwidth]{TP_Caracterisation_Liaison_Hertzienne/fig/modelisation.png}
+\end{figure}
+
+\section{Préparation}
+
+\begin{enumerate}
+    \item Expliquer le phénomène physique que l'on doit observer sur la mesure de la puissance
+reçue sur l'antenne de réception. Comment varie cette puissance en fonction de la distance
+entre les antennes.
+    \item En faisant l'hypothèse que la distance entre antennes est grande devant les hauteurs $h_1$ et
+$h_2$ des antennes, montrer que le déphasage entre les deux trajets $r_1$ et $r_2$ est donné
+approximativement par:
+
+\[\Delta \phi \approx \frac{4\pi h_1 h_2}{\lambda d}\]
+
+    \item En déduire que la distance qui sépare deux maxima ou deux minima successifs pour $h_1$ et
+$h_2$ constants est donnée par:
+
+\[\Delta d \approx \frac{\lambda d^2}{2 h_1 h_2}\]
+
+\end{enumerate}
+
+\section{Réglage du banc de mesure}
+
+\begin{enumerate}
+    \item Déterminer expérimentalement une valeur optimale de la fréquence de travail à l'aide de
+la cavité située en amont de la diode Gunn.
+    \item Déterminer la polarisation du champ.
+    \item Mesurer le gain des antennes
+\end{enumerate}
+
+\section{Réflexion sur le sol}
+
+Insérer une plaque métallique horizontale sur le banc de mesure.
+
+\begin{enumerate}
+    \item Tracer le niveau de sortie en fonction de la distance d entre les cornets
+    \item Comparer la valeur de $\Delta d$ obtenue expérimentalement à celle obtenue théoriquement.
+\end{enumerate}
+
+\section{Simulation de la liaison hertzienne}
+
+Ouvrir le logiciel ADS\@. Créer un nouveau workspace, et un nouveau schematic. Créer la liaison
+caractérisée par le schéma suivant:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{TP_Caracterisation_Liaison_Hertzienne/fig/Simulation.png}
+\end{figure}
+
+Le modèle de simulation comprend les éléments suivants
+
+(sous la forme: nom\_librairie \ldots nom\_composant):
+
+\begin{itemize}
+    \item \textit{``Timed Sources \ldots ConstTimed''}: porteuse RF non modulée de niveau constant
+    \begin{itemize}
+        \item TStep = 10 secondes (période d'échantillonnage)
+        \item FCarrier = mesurée en début de séance
+        \item Value = 1.0
+    \end{itemize}
+    \newpage
+    \item ``Antennas \& Propagation \ldots AntBase'': antenne d'émission (station de base)
+    \begin{itemize}
+        \item Gain = gain mesuré en début de séance
+        \item X = Y = 0 (position de l'antenne dans le plan: à l'origine)
+        \item Height = à mesurer
+    \end{itemize}
+    \item ``Antennas \& Propagation \ldots PropFlatEarth'': canal de propagation hertzien (modèle terrestre ``plat'' théorique)
+    \begin{itemize}
+        \item Polarization = à mesurer
+        \item Permittivity, Conductivity: valeurs définies dans la suite
+    \end{itemize}
+    \item ``Antennas \& Propagation \ldots AntMobile'': antenne de réception mobile (ce modèle permet de faire
+varier la distance entre les deux antennes)
+    \begin{itemize}
+        \item Gain = gain mesuré en début de séance
+        \item X = X0 (position initiale de l'antenne de réception, définie dans le bloc ``Variables'')
+        \item Y = 0
+        \item Height = à mesurer
+        \item SpeedType = km/h
+        \item Vx = Vx (vitesse en km/h de l'antenne mobile, définie dans le bloc ``Variables'')
+        \item Vy = 0 (déplacement suivant l'axes des x)
+    \end{itemize}
+    \item ``Sinks \ldots TimedSink'': prélèvement du signal de sortie
+    \begin{itemize}
+        \item Les paramètres par défaut sont corrects.
+    \end{itemize}
+
+    \vspace{0.25cm}
+    Ajouter sur le schéma les blocs suivants:
+
+    \item ``Controllers \ldots DF'': bloc de définition des paramètres de simulation, avec:
+    \begin{itemize}
+        \item Dans Controls: DefaultTimeStop = 1000 s
+        \item Dans Options: OutVar = X0 Vx (récupération des variables à tracer; attention, séparateur = espace)
+    \end{itemize}
+
+    \item ``Controllers \ldots VAR eqn'': bloc de définition d'équations et de variables, avec:
+    \begin{itemize}
+        \item X0
+        \item Vx
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\textbf{\underline{Remarque}}
+
+Le logiciel utilise le concept d'enveloppe complexe pour effectuer les simulations. Soit un signal
+$x(t)$ de type passe-bande --- encore appelé signal bande étroite --- typiquement constitué par une
+porteuse modulée, d'expression générale:
+
+\[x(t) = i_x(t) \cos(2\pi f_c t) - q_x(t) \sin(2\pi f_c t)\]
+
+ou
+
+\[x(t)=\Re\{(i_x(t) + j q_x(t)) e^{j 2\pi f_c t}\}\]
+
+On appelle \textit{enveloppe complexe} du signal $x(t)$ la grandeur $x_E(t)$ définie par: $i_x(t)+j q_x(t)$
+
+L'enveloppe complexe $x_E(t)$ constitue un signal bande de base complexe associé au signal passe-bande
+$x(t)$; il s'agit d'un processus beaucoup plus lent que la porteuse elle-même et transportant la
+partie informationnelle du signal. On peut montrer que la simulation peut s'effectuer en calculant
+uniquement l'enveloppe complexe, sans avoir à simuler la porteuse HF elle-même (un filtre passe-bande
+est par exemple remplacé par un filtre passe-bas équivalent). Ceci permet de réduire les
+durées de simulation dans des proportions considérables.
+
+\textbf{\underline{Simulations}}
+
+L'objectif est de relever, d'analyser et d'interpréter, la courbe du gain de liaison en fonction de la
+distance dans les différentes situations. On tracera le gain en fonction de la distance.
+
+\subsection{Banc de mesure}
+
+Comparer les résultats de simulation aux résultats expérimentaux.
+
+\subsection{Cas réaliste}
+
+Utiliser les paramètres suivants: 
+\begin{itemize}
+    \item FCarrier = 6 GHz (fréquence porteuse)
+    \item Gain = 40 dB (gain des antennes)
+    \item Height = 20 m (antenne fixe) et 2 m (antenne mobile)
+    \item vitesse véhicule = 100 km/h
+    \item X0=1000
+\end{itemize}
+
+\begin{enumerate}
+    \item Sol absent (permittivité relative: $\epsilon_r = 1$, conductivité: $\sigma = 0$)
+    
+    Comparer à la courbe théorique attendue (propagation en espace libre).
+
+    \item Sol très bon conducteur (permittivité relative: $\epsilon_r = 1$, conductivité: $\sigma = 10^{10}$)
+    
+    Avec ces valeurs, le coefficient de réflexion sur le sol est très proche de 1.
+    \begin{itemize}
+        \item Déterminer les distances où un \textit{fading} apparaît. Comparer aux valeurs théoriques et
+expérimentales.
+        \item Superposer, sur le relevé, les dessins de la courbe théorique avec le sol absent et celui
+de cette même courbe théorique translatée de +6 dB. Interpréter.
+        \item Interpréter le comportement asymptotique de la courbe relevée.
+    \end{itemize}
+    \item Sol conducteur réel (permittivité relative: $\epsilon_r = 5$, conductivité: $\sigma = 100$)
+
+    Avec ces valeurs, le coefficient de réflexion sur le sol est relativement proche de -1.
+    \begin{itemize}
+        \item Déterminer les distances où un \textit{fading} apparaît et comparer au cas précédent.
+Comparer aux valeurs théoriques attendues.
+        \item Interpréter le comportement asymptotique de la courbe relevée.
+    \end{itemize}
+
+\end{enumerate}
