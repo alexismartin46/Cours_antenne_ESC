@@ -28,7 +28,10 @@ Module issu des sources de J-M. DUMAS
 
 # Bibliographie
 [1] C. A. Balanis, "Antenna Theory : Analysis and Design", Wiley, 2005.
+
 [2] W. L. Stutzman, G. A. Thiele, "Antenna Theory and Design", Wiley, 1981.
+
 [3] T. A. Milligan, "Modern Antenna Design", Wiley, 2005.
+
 [4] R. Garg, P. Bhartia, I. Bahl, A. Ittipiboon, "Microstrip Antenna Design Handbook", Artech House Publishers, 2000.
 
