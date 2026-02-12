@@ -1,0 +1,121 @@
+\chapter{Analyseur de réseau et Antenne quart d'onde}
+
+\section{But de la manipulation}
+
+La première partie sert à comprendre, du point de vue de la mesure, le fonctionnement d'un
+analyseur de réseau vectoriel. Cette partie concerne le calibrage de l'appareil par la méthode
+dite du ``full-two-port''. Celle-ci ne peut s'effectuer que si l'on a bien saisi les causes d'erreurs
+systématiques de la mesure.
+
+La seconde partie consiste à mesurer les caractéristiques d'une antenne type ``dipôle quart
+d'onde''. On s'intéressera plus précisément à son impédance d'entrée et à son gain. Au point de
+vue de l'utilisation de l'analyseur de réseau, cela se traduira par la mesure d'un dipôle en
+réflexion, et par la mesure d'un quadripôle en transmission.
+
+\section{Rappel sur les erreurs systématiques}
+
+Lorsqu'on mesure un dipôle, on utilise un montage à deux coupleurs:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{TP_Antenne_Quart_Onde/fig/Montage_2_coupleurs.png}
+\end{figure}
+
+Si aucune erreur n'intervient, le rapport $\frac{b_1}{a_1}$
+est proportionnel au coefficient de réflexion:
+
+\begin{equation}
+    \frac{b_1}{a_1}=E_{RF}\Gamma
+    \label{eq_1}
+\end{equation}
+
+
+La mauvaise directivité du coupleur mesurant $b_1$ introduit un terme additif $E_{DF}$. 
+L'impédance de Thévenin que voit le dispositif à mesurer n'est pas adaptée. Elle a un coefficient de réflexion
+égal à $E_{SF}$. On a un régime de réflexions multiples:
+
+\begin{equation}
+    \frac{b_1}{a_1}=E_{DF}+\frac{E_{RF}\Gamma}{1-E_{SF}\Gamma}
+    \label{eq_2}
+\end{equation}
+
+Il faut donc, en théorie, disposer de trois coefficients de réflexion étalons pour déterminer les
+trois termes $E_{RF}$, $E_{DF}$, $E_{SF}$.
+
+\newpage
+Lorsqu'on effectue les mesures d'un quadripôle, on ajoute un terme de proportionnalité $E_{TF}$, un
+terme de désadaptation de charge $E_{LF}$, et un terme d'isolation $E_{XF}$. Les équations linéaires entre
+$a_1$, $b_1$ et $b_2$ sont représentées par un graphe de fluence:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{TP_Antenne_Quart_Onde/fig/graph_Fluence.png}
+\end{figure}
+
+Lorsqu'on fait les mesures inverses, on intervertit, par des commutateurs internes, ce qui est
+avant $R_1$, et ce qui est après $R_2$. Le graphe de fluence est alors:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{TP_Antenne_Quart_Onde/fig/graph_Fluence2.png}
+\end{figure}
+
+\section{Préparation}
+
+\subsection{Mesures en réflexion}
+
+\begin{itemize}
+    \item Interpréter physiquement l'équation (\ref{eq_1})
+    \item \underline{\textbf{Charge coulissante}}: On place, en réflexion, une charge dont le $|\Gamma|$ est faible (de l'ordre
+de 0.1), et dont on peut faire varier mécaniquement $Arg(\Gamma)$. En appliquant l'équation
+(\ref{eq_2}), trouver, pour une fréquence fixe, le lieu de $\frac{b_1}{a_1}$ dans le plan complexe. Quel est le
+terme d'erreur que l'on peut déduire de cette mesure?
+\end{itemize}
+
+\subsection{Mesures en transmission}
+
+Le calibrage en réflexion consiste à effectuer les mesures lorsqu'on charge chaque accès par
+une charge adaptée, puis lorsque l'on relie les deux accès. Expliquer comment, physiquement
+(sans équation), on peut déterminer $E_{XF}$, $E_{LF}$, $E_{TF}$.
+
+\section{Manipulations}
+
+\subsection{Calibrage complet}
+
+\begin{itemize}
+    \item Mesurer un atténuateur court-circuité en réflexion et un atténuateur en transmission sans calibration du VNA\@.
+    \item Effectuer le calibrage complet en réflexion et en transmission (full-two-port).
+    \item Mesurer de nouveau l'atténuateur court-circuité en réflexion et l'atténuateur en transmission avec la calibration du VNA\@.
+    \item Conclure et interpréter les défauts constatés sans correction.
+\end{itemize}
+
+\subsection{Mesure de l'antenne quart d'onde}
+
+\subsubsection{Mesure en réflexion}
+\begin{itemize}
+    \item Déterminer un ordre de grandeur de la fréquence de résonance du dipôle quart d'onde proposé.
+    \item Effectuer un calibrage complet au niveau du plan de masse. (Effectuer d'abord un calibrage en
+réflexion sur connecteurs type SMA, puis faire un changement de plan de référence pour se
+ramener au niveau de l'antenne). On choisira une bande de $\pm 20 \%$ de la fréquence de
+résonnance.
+    \item Mesurer $S_{11}$ pour une des antennes dont on notera la hauteur $h$ par rapport au plan de masse.
+    \item Observer la résonance. S'agit-il d'une résonance série ou bien d'une résonance parallèle? Noter
+la valeur de la fréquence de résonance $f_0$.
+    \item Relever les courbes $R(f)$ et $X(f)$ (parties réelle et imaginaire de l'impédance d'entrée de l'antenne).
+Donner la valeur du facteur de raccourcissement $K$:
+\begin{equation*}
+    K=\dfrac{\dfrac{\lambda_0}{4}-h}{\dfrac{\lambda_0}{4}}
+\end{equation*}
+\item Déterminer le coefficient de qualité du doublet, celui-ci peut être obtenu à l'aide de:
+\begin{equation*}
+    Q=\frac{1}{2}\frac{\partial X}{\partial f}\frac{f_0}{R}
+\end{equation*}
+
+\end{itemize}
+
+\subsubsection{Mesure en transmission}
+
+On place deux antennes quart d'onde identiques à la résonance pour établir une transmission
+en espace libre. Mesurer l'affaiblissement de la transmission.
+
+En déduire le gain d'un dipôle (tenir compte de la désadaptation). Comparer à la valeur théorique.
