@@ -19,9 +19,11 @@ Module issu des sources de J-M. DUMAS
 # TPs
 [Sujet de TP complet](./TP/TPs.pdf)
 
-- Simulation d'un réseau d'antennes Patch (ADS)
+- Mesure d'une antenne quart d'onde au VNA
+- Simulation electromagnetique 2.5D d'un réseau d'antennes Patch (ADS)
 - Mesure d'antennes imprimées en chambre anéchoïque
 - Caractérisation d'une liaison hertzienne (Banc de mesure + Simulation ADS)
+- Simulation 3D d'antenne sous COMSOL Multiphysique
 
 # Examens
 - 2025
