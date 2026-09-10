@@ -11,7 +11,7 @@ aspectratio=169,
 \usepackage{beamerthemeensea}
 
 
-\title{Antennes – ESC}
+\title{Antennes - ESC}
 \subtitle{Cours 2: Propriétés générales des antennes}
 \date{\the\year}
 \author{Alexis MARTIN}
@@ -271,12 +271,17 @@ Approximation si l'antenne est assez directive:
 %%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Directivité \& Réciprocité}
-
-\begin{tcolorbox}[colframe=red,width=5cm]
+\begin{minipage}{0.45\textwidth}
+    \begin{tcolorbox}[colframe=red,width=5cm]
 \center$D_{dB}=10\log_{10}D_{lin}$
 \end{tcolorbox}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+Unité : \underline{\textbf{dBi}}
+\end{minipage}
 
-%\vspace{0.5cm}
+
+\vspace{0.5cm}
 Une liaison entre 2 antennes est réciproque:
 
 \begin{minipage}{0.45\textwidth}
@@ -326,15 +331,18 @@ Le gain d'une antenne permet de calculer la puissance (par unité
 d'angle solide) dans la direction du maximum, à partir de la
 puissance absorbée par l'antenne.
 
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.35\textwidth}
 \begin{tcolorbox}[colframe=red,width=4cm]
 \center$G=\dfrac{U_{\max}}{\left(\dfrac{P_{abs}}{4\pi}\right)}$
 \end{tcolorbox}
 \end{minipage}
-\begin{minipage}{0.45\textwidth}
-\begin{tcolorbox}[colframe=red,width=5cm]
+\begin{minipage}{0.35\textwidth}
+\begin{tcolorbox}[colframe=red,width=4.5cm]
 \center$G_{dB}=10\log_{10}G_{lin}$
 \end{tcolorbox}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+Unité : \underline{\textbf{dBi}}
 \end{minipage}
 
 \vspace{0.5cm}
@@ -350,13 +358,11 @@ On trouve aussi souvent la notion de ``Gain réalisé'':
 \end{tcolorbox}
 \end{center}
 
-
-
 \end{frame}
 
 %%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Relation Gain – Directivité}
+\frametitle{Relation Gain - Directivité}
 
 \begin{tcolorbox}[colframe=red,width=4cm]
 \center$D=\dfrac{U_{\max}}{\left(\dfrac{P_{ray}}{4\pi}\right)}$
