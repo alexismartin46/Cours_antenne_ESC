@@ -23,7 +23,9 @@ Module issu des sources de J-M. DUMAS
 - Simulation electromagnetique 2.5D d'un réseau d'antennes Patch (ADS)
 - Mesure d'antennes imprimées en chambre anéchoïque
 - Caractérisation d'une liaison hertzienne (Banc de mesure + Simulation ADS)
-- Simulation 3D d'antenne sous COMSOL Multiphysique
+- Simulation 3D d'antenne sous Ansys HFSS
+
+TP version 2025 : Simulation 3D d'antenne sous Comsol Multiphysics
 
 # Examens
 - 2025
